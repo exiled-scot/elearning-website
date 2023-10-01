@@ -8,11 +8,14 @@ const Card = ({ courses }) => {
     <div className="card-container">
       {courses.map((course) => (
         <div className="card" key={course.id}>
-          <img
-            src={`http://localhost:5002/api/files/at7b3ntpxm6n6r1/${course.id}/${course.image}?token=`}
-            alt="image"
-            className="card-image"
-          />
+          <div className="image-wrapper">
+            <img
+              src={`http://localhost:5002/api/files/at7b3ntpxm6n6r1/${course.id}/${course.image}?token=`}
+              alt="image"
+              className="card-image"
+            />
+            <div className="image-overlay"></div>
+          </div>
           <div className="wrapper">
             <div className="content">
               <h2 className="title">
