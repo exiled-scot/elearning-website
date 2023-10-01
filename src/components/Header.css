@@ -1,0 +1,47 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 0 20px;
+  z-index: 999;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.burger-menu {
+  display: flex;
+  align-items: center;
+}
+
+.burger-button {
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.header-title {
+  text-align: center;
+  margin: 0;
+}
+
+.header-buttons {
+  display: flex;
+}
+
+.action-button {
+  margin-left: 10px;
+  border: none;
+  background-color: #0048b3;
+  color: #ffffff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Additional styling for responsive design or other customizations can be added here */

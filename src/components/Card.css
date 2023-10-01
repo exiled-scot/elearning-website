@@ -1,0 +1,55 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 300px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.card .wrapper {
+  padding: 10px;
+}
+
+.card .title {
+  font-weight: bold;
+}
+
+.card .instructor {
+  color: gray;
+}
+
+.card .text {
+  margin-top: 10px;
+}
+
+.card .menu-content {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.card .menu-content li {
+  margin-bottom: 10px;
+}
+
+.card .menu-content li a {
+  text-decoration: none;
+  color: #000;
+}
+
+.card .menu-content li a i {
+  margin-right: 5px;
+}
