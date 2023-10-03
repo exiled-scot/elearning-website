@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Card.css";
 
 const Card = ({ courses }) => {
+  const [hoveredCourseId, setHoveredCourseId] = useState(null);
+
+  const handleMouseEnter = (courseId) => {
+    setHoveredCourseId(courseId);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredCourseId(null);
+  };
+
   if (!courses) return null;
 
   return (
     <div className="card-container">
       {courses.map((course) => (
-        <div className="card" key={course.id}>
+        <div
+          className={`card ${hoveredCourseId === course.id ? "hovered" : ""}`}
+          key={course.id}
+          onMouseEnter={() => handleMouseEnter(course.id)}
+          onMouseLeave={handleMouseLeave}
+        >
           <div className="image-wrapper">
             <img
               src={`http://localhost:5002/api/files/at7b3ntpxm6n6r1/${course.id}/${course.image}?token=`}
