@@ -2,10 +2,9 @@
   position: absolute;
   top: 100%;
   left: 0;
-  width: 20%; /* Adjust the percentage as desired */
   background-color: #f8f8f8;
   padding: 0 20px;
-  margin: 0;
+  margin: 100;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   list-style: none;
 }
@@ -18,6 +17,39 @@
   flex-direction: column;
   background-color: #f8f8f8;
   padding: 10px 20px; /* Add desired padding value */
+  margin: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  list-style: none;
+}
+
+.menu-item {
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.menu-item.active {
+  font-weight: bold;
+}
+
+.sub-menu li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sub-menu li:hover:not(.active) {
+  font-weight: bold;
+}
+
+.sub-menu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  display: none;
+  flex-direction: column;
+  background-color: #f8f8f8;
+  padding: 10px 20px;
   margin: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   list-style: none;
@@ -51,4 +83,8 @@
 
 .sub-menu li:hover:not(.active) {
   font-weight: bold;
+}
+
+.menu-item:hover .sub-menu {
+  display: flex;
 }

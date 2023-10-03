@@ -46,10 +46,10 @@ const Menu = () => {
           Engineering
           {activeCategory === "Engineering" && (
             <ul className="sub-menu">
-              <li>Electrical Engineering</li>
-              <li>Mechanical Engineering</li>
-              <li>Civil Engineering</li>
-              <li>Chemical Engineering</li>
+              <li>Electrical</li>
+              <li>Mechanical</li>
+              <li>Civil</li>
+              <li>Chemical</li>
             </ul>
           )}
         </li>
