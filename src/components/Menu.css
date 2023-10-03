@@ -11,12 +11,9 @@
 
 .sub-menu {
   position: absolute;
-  top: 0;
-  left: 100%;
   display: flex;
   flex-direction: column;
   background-color: #f8f8f8;
-  padding: 10px 20px; /* Add desired padding value */
   margin: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   list-style: none;
@@ -63,6 +60,7 @@
   height: 100%;
   padding: 0;
   margin: 0;
+  min-width: 200px;
 }
 
 .menu-item {
@@ -87,4 +85,14 @@
 
 .menu-item:hover .sub-menu {
   display: flex;
+}
+.sub-menu li {
+  padding: 10px;
+  cursor: pointer;
+  font-weight: normal; /* Add this line to set the initial font weight to normal */
+  min-width: 250px;
+}
+
+.sub-menu li:hover:not(.active) {
+  font-weight: bold;
 }
