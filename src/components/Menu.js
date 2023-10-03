@@ -53,7 +53,6 @@ const Menu = () => {
             </ul>
           )}
         </li>
-        <li>Contact</li>
       </ul>
     </div>
   );
