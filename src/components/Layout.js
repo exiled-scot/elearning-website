@@ -7,8 +7,7 @@ function Layout({ children }) {
   return (
     <div>
       <Header />
-      <div className="main-content" style={{ marginTop: "70px" }}>
-        {/* Use a div with class name */}
+      <div className="main-content">
         {children}
       </div>
       <Footer />
