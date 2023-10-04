@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import slugify from "slugify";
 import "./Card.css";
 
 const Card = ({ courses }) => {
@@ -34,7 +36,9 @@ const Card = ({ courses }) => {
           <div className="wrapper">
             <div className="content">
               <h2 className="title">
-                <a href="#">{course.title}</a>
+                <Link to={`/courses/${slugify(course.title)}`}>
+                  {course.title}
+                </Link>
               </h2>
               <p className="instructor">{course.instructor}</p>
               <p className="text">{course.description}</p>
