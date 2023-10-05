@@ -1,34 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "../App.css";
 
-const ReadMore = ({ text }) => {
-  const [showFullText, setShowFullText] = useState(false);
+const ReadMore = ({ children }) => {
+  const text = children;
+  const paragraphs = text.split("\n").map((paragraph, index) => (
+    <p key={index}>{paragraph}</p>
+  ));
 
-  // Extract the first 2 paragraphs from the text
-  const paragraphs = text.split('\n').slice(0, 2).join('\n');
-  // Check if there are remaining paragraphs
-  const shouldShowReadMore = text.split('\n').length > 2;
-
-  const handleReadMoreClick = () => {
-    setShowFullText(true);
+  const [isReadMore, setIsReadMore] = useState(true);
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
   };
 
   return (
-    <>
-      {shouldShowReadMore ? (
-        <>
-          {showFullText ? (
-            <p>{text}</p>
-          ) : (
-            <>
-              <p>{paragraphs}</p>
-              <p onClick={handleReadMoreClick} className="read-more-link">Read More</p>
-            </>
-          )}
-        </>
-      ) : (
-        <p>{text}</p>
+    <div>
+      {isReadMore ? paragraphs.slice(0, 2) : paragraphs}
+      {paragraphs.length > 2 && (
+        <span onClick={toggleReadMore} className="read-or-hide">
+          {isReadMore ? "...read more" : " show less"}
+        </span>
       )}
-    </>
+    </div>
   );
 };
 

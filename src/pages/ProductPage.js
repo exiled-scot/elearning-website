@@ -1,41 +1,42 @@
-import React from 'react';
-import Reviews from '../components/Reviews';
-import ReadMore from '../components/ReadMore';
-import './ProductPage.css';
+import React from "react";
+import Reviews from "../components/Reviews";
+import "./ProductPage.css";
+import ReadMore from "../components/ReadMore";
+
+const CourseTitle = ({ title }) => {
+  return <h1>{title}</h1>;
+};
+
+const CourseImage = ({ id, image }) => {
+  const imageUrl = `http://localhost:5002/api/files/at7b3ntpxm6n6r1/${id}/${image}?token=`;
+
+  return <img src={imageUrl} alt="image" className="card-image" />;
+};
 
 const CourseContent = ({ content }) => {
-  // Parse the JSON object
-  const parsedContent = JSON.parse(content);
-
-  // Access the course_contents array
+  const parsedContent = content instanceof Object ? content : JSON.parse(content);
   const courseContentList = parsedContent.course_contents.map((item, index) => (
     <li key={index}>{item}</li>
   ));
 
   return (
-    <div>
-      <ul>
-        {courseContentList}
-      </ul>
+    <div className="course-content-box">
+      <h2>What you'll learn</h2>
+      <ul>{courseContentList}</ul>
     </div>
   );
 };
 
 const ProductPage = ({ course }) => {
+  const { title, id, image, content, description, reviews } = course;
+
   return (
     <div>
-      <h1>{course.title}</h1>
-      <img
-        src={`http://localhost:5002/api/files/at7b3ntpxm6n6r1/${course.id}/${course.image}?token=`}
-        alt="image"
-        className="card-image"
-      />
-      <div className="course-content-box">
-        <h2>What you'll learn</h2>
-        <CourseContent content={course.content} />
-      </div>
-      <ReadMore text={course.description} />
-      <Reviews reviews={course.reviews}/>
+      <CourseTitle title={title} />
+      <CourseImage id={id} image={image} />
+      <CourseContent content={content} />
+      <ReadMore>{description}</ReadMore>
+      <Reviews reviews={reviews} />
     </div>
   );
 };
