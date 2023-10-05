@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Reviews from '../components/Reviews';
+import './ProductPage.css';
 
 const CourseContent = ({ content }) => {
   // Parse the JSON object
@@ -20,10 +21,16 @@ const CourseContent = ({ content }) => {
 };
 
 const ProductPage = ({ course }) => {
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
   // Extract the first 2 paragraphs from the description
   const descriptionParagraphs = course.description.split('\n').slice(0, 2).join('\n');
   // Check if there are remaining paragraphs
   const shouldShowReadMore = course.description.split('\n').length > 2;
+
+  const handleReadMoreClick = () => {
+    setShowFullDescription(true);
+  };
 
   return (
     <div>
@@ -39,13 +46,19 @@ const ProductPage = ({ course }) => {
       </div>
       {shouldShowReadMore ? (
         <>
-          <p>{descriptionParagraphs}</p>
-          <p>Read More</p>
+          {showFullDescription ? (
+            <p>{course.description}</p>
+          ) : (
+            <>
+              <p>{descriptionParagraphs}</p>
+              <p onClick={handleReadMoreClick} className="read-more-link">Read More</p>
+            </>
+          )}
         </>
       ) : (
         <p>{course.description}</p>
       )}
-    <Reviews reviews={course.reviews}/>
+      <Reviews reviews={course.reviews}/>
     </div>
   );
 };
