@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import slugify from "slugify";
 import "./Card.css";
+import slugify from "slugify";
 
 const Card = ({ courses }) => {
   const [hoveredCourseId, setHoveredCourseId] = useState(null);
@@ -43,7 +43,7 @@ const Card = ({ courses }) => {
                 </Link>
               </h2>
               <p className="instructor">{course.instructor}</p>
-              <p className="text">{course.description}</p>
+              <p className="description">{course.description.split('\n')[0]}</p>
             </div>
             <ul className="menu-content">
               <li>
