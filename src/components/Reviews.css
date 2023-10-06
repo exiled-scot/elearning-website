@@ -1,0 +1,150 @@
+.rating-star {
+  display: inline-block;
+  color: gold;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  position: relative;
+}
+
+.rating-star::before {
+  content: '★';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.rating-star::after {
+  content: '★';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  color: inherit;
+  opacity: 0.3;
+}
+
+.rating-star.rating::after {
+  content: '';
+  width: calc((100% - var(--rating)) * 1%);
+  background-color: grey;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  color: inherit;
+}
+Display 5/5 as empty stars, filling each one from left to right to match the rating number
+#+end_src
+
+#+RESULTS:
+To display the rating as empty stars, dynamically filling each one from left to right to match the rating number, you can update the CSS class for the rating stars. Here's an updated version of the code that achieves this:
+
+```jsx
+// ~/Programming/elearning-website/src/components/Reviews.js
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './Reviews.css';
+
+const Reviews = ({ reviews, course }) => {
+  const [visibleReviews, setVisibleReviews] = useState(3);
+  const navigate = useNavigate();
+
+  const handleSeeMore = () => {
+    if (visibleReviews >= reviews.length) {
+      // Redirect to the reviews page
+      // You can replace "/courses/reviews" with the actual URL for the reviews page
+      navigate('/courses/reviews');
+    } else {
+      setVisibleReviews(visibleReviews + 3);
+    }
+  };
+
+  if (reviews === null || !Array.isArray(reviews) || reviews.length === 0) {
+    return (
+      <div>
+        <h3>Reviews</h3>
+        <p>Write a review!</p>
+      </div>
+    );
+  }
+
+  // Function to generate an array of empty stars based on the rating
+  const generateEmptyStars = (rating) => {
+    const emptyStars = Array.from({ length: 5 }, (_, index) => {
+      return (
+        <span key={index} className={`rating-star empty-star`} />
+      );
+    });
+
+    return emptyStars;
+  };
+
+  return (
+    <div>
+      <h2>Reviews</h2>
+      <ul>
+        {reviews.slice(0, visibleReviews).map((review, index) => (
+          <li key={index}>
+            <h3>{review.title}</h3>
+            <p>{review.description}</p>
+            <p>Rating: {review.rating}/5</p>
+            <p>Author: {review.author}</p>
+            <div className="rating-stars">
+              {generateEmptyStars(review.rating)}
+            </div>
+          </li>
+        ))}
+      </ul>
+      {reviews.length > visibleReviews && (
+        <button onClick={handleSeeMore}>See more reviews</button>
+      )}
+    </div>
+  );
+};
+
+export default Reviews;
+```
+
+```css
+/* ~/Programming/elearning-website/src/components/Reviews.css */
+.rating-star {
+  display: inline-block;
+  color: gold;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  position: relative;
+}
+
+.rating-star::before {
+  content: '★';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.rating-star::after {
+  content: '';
+  width: 100%;
+  background-color: grey;
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  color: inherit;
+  overflow: hidden;
+}
+
+.rating-stars {
+  width: 100px; /* Set the width of the rating stars container as desired */
+}
+
+.empty-star {
+  overflow: hidden;
+  width: calc(100% / 5);
+}
