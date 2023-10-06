@@ -1,0 +1,16 @@
+.two-column-list {
+  column-count: 2;
+  border: 1px solid #000;
+  padding: 50px;
+}
+
+.two-column-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px; /* Add margin-bottom for spacing between lines */
+}
+
+.two-column-list li:before {
+  content: "✔️";
+  margin-right: 1.5em;
+}

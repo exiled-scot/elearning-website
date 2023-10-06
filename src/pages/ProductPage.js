@@ -22,7 +22,7 @@ const CourseContent = ({ content }) => {
   return (
     <div className="course-content-box">
       <h2>What you'll learn</h2>
-      <ul>{courseContentList}</ul>
+      <ul className="two-column-list">{courseContentList}</ul>
     </div>
   );
 };
