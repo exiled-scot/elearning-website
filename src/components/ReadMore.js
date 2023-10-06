@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../App.css";
+import "./ReadMore.css";
 
 const ReadMore = ({ children }) => {
   const text = children;
@@ -13,7 +13,7 @@ const ReadMore = ({ children }) => {
   };
 
   return (
-    <div>
+    <div className="text">
       {isReadMore ? paragraphs.slice(0, 2) : paragraphs}
       {paragraphs.length > 2 && (
         <span onClick={toggleReadMore} className="read-or-hide">
