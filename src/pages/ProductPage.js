@@ -24,7 +24,9 @@ const CourseContent = ({ content }) => {
     <div className="course-content-box">
       <h2>What you'll learn</h2>
       {parsedContent.course_contents && (
-        <ul className="two-column-list">{courseContentList}</ul>
+        <div className="centered-list">
+          <ul className="two-column-list">{courseContentList}</ul>
+        </div>
       )}
     </div>
   );
@@ -39,7 +41,6 @@ const ProductPage = ({ course }) => {
       <CourseImage id={id} image={image} />
       <CourseContent content={content} />
       <ReadMore>{description}</ReadMore>
-      <Requirements requirements={requirements}/>
      <Reviews reviews={Object.values(reviews)} course={course} />
     </div>
   );
