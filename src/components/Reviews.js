@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StarRatings from "react-star-ratings";
-
 import "./Reviews.css";
 
 const Reviews = ({ reviews }) => {
@@ -40,8 +39,8 @@ const Reviews = ({ reviews }) => {
                 starSpacing="2px"
               />
             </div>
-            <p>{review.description}</p>
             <p className="rating-author">{review.author}</p>
+            <p>{review.description}</p>
           </li>
         ))}
       </ul>

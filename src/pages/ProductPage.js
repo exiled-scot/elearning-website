@@ -2,6 +2,7 @@ import React from "react";
 import Reviews from "../components/Reviews";
 import "./ProductPage.css";
 import ReadMore from "../components/ReadMore";
+import Requirements from "../components/Requirements";
 
 const CourseTitle = ({ title }) => {
   return <h1>{title}</h1>;
@@ -15,20 +16,22 @@ const CourseImage = ({ id, image }) => {
 
 const CourseContent = ({ content }) => {
   const parsedContent = content instanceof Object ? content : JSON.parse(content);
-  const courseContentList = parsedContent.course_contents.map((item, index) => (
+  const courseContentList = parsedContent.course_contents?.map((item, index) => (
     <li key={index}>{item}</li>
   ));
 
   return (
     <div className="course-content-box">
       <h2>What you'll learn</h2>
-      <ul className="two-column-list">{courseContentList}</ul>
+      {parsedContent.course_contents && (
+        <ul className="two-column-list">{courseContentList}</ul>
+      )}
     </div>
   );
 };
 
 const ProductPage = ({ course }) => {
-  const { title, id, image, content, description, reviews } = course;
+  const { title, id, image, content, description, requirements, reviews } = course;
 
   return (
     <div>
@@ -36,7 +39,8 @@ const ProductPage = ({ course }) => {
       <CourseImage id={id} image={image} />
       <CourseContent content={content} />
       <ReadMore>{description}</ReadMore>
-      {course && <Reviews reviews={Object.values(reviews)} course={course} />}
+      <Requirements requirements={requirements}/>
+     <Reviews reviews={Object.values(reviews)} course={course} />
     </div>
   );
 };
