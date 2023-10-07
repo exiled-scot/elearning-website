@@ -43,7 +43,9 @@ const Card = ({ courses }) => {
                 </Link>
               </h2>
               <p className="instructor">{course.instructor}</p>
-              <p className="description">{course.description.split('\n')[0]}</p>
+              <p className="description">
+                {course.description.split(".")[0].trim()}
+              </p>
             </div>
             <ul className="menu-content">
               <li>
