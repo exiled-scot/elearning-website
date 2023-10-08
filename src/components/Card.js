@@ -28,7 +28,7 @@ const Card = ({ courses }) => {
           <Link to={`/courses/${slugify(course.title)}`}>
             <div className="image-wrapper">
               <img
-                src={`http://localhost:5002/api/files/at7b3ntpxm6n6r1/${course.id}/${course.image}?token=`}
+                src={`http://localhost:5002/api/files/zahet9k8sqf34u9/${course.id}/${course.image}?token=`}
                 alt="image"
                 className="card-image"
               />

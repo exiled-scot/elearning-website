@@ -9,7 +9,7 @@ const CourseTitle = ({ title }) => {
 };
 
 const CourseImage = ({ id, image }) => {
-  const imageUrl = `http://localhost:5002/api/files/at7b3ntpxm6n6r1/${id}/${image}?token=`;
+  const imageUrl = `http://localhost:5002/api/files/zahet9k8sqf34u9/${id}/${image}?token=`;
 
   return <img src={imageUrl} alt="image" className="card-image" />;
 };
@@ -47,7 +47,7 @@ const ProductPage = ({ course }) => {
       <CourseImage id={id} image={image} />
       <CourseContent content={content} />
       <ReadMore>{description}</ReadMore>
-      <Reviews reviews={reviews} course={course} />
+     {/* <Reviews reviews={Object.values(reviews)} course={course} /> */}
     </div>
   );
 };
