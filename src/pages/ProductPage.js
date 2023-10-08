@@ -15,6 +15,10 @@ const CourseImage = ({ id, image }) => {
 };
 
 const CourseContent = ({ content }) => {
+  if (content === null) {
+    return null;
+  }
+
   let parsedContent;
 
   try {
@@ -28,14 +32,16 @@ const CourseContent = ({ content }) => {
     <li key={index}>{item}</li>
   ));
 
-  return (
-    parsedContent.course_contents && (
-      <div className="course-content-box">
-        <h2>What you'll learn</h2>
-        <ul className="two-column-list">{courseContentList}</ul>
-      </div>
-    )
-  );
+  if (parsedContent?.course_contents?.length > 0) {
+    return (
+      parsedContent.course_contents && (
+        <div className="course-content-box">
+          <h2>What you'll learn</h2>
+          <ul className="two-column-list">{courseContentList}</ul>
+        </div>
+      )
+    );
+  }
 };
 
 const ProductPage = ({ course }) => {
