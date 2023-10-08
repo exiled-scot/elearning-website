@@ -47,7 +47,7 @@ const ProductPage = ({ course }) => {
       <CourseImage id={id} image={image} />
       <CourseContent content={content} />
       <ReadMore>{description}</ReadMore>
-     {/* <Reviews reviews={Object.values(reviews)} course={course} /> */}
+      <Reviews reviews={reviews} course={course} />
     </div>
   );
 };
