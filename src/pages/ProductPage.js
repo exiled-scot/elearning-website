@@ -15,20 +15,26 @@ const CourseImage = ({ id, image }) => {
 };
 
 const CourseContent = ({ content }) => {
-  const parsedContent = content instanceof Object ? content : JSON.parse(content);
+  let parsedContent;
+
+  try {
+    parsedContent = content instanceof Object ? content : JSON.parse(content);
+  } catch (error) {
+    console.error('Error parsing content:', error);
+    parsedContent = {};
+  }
+
   const courseContentList = parsedContent.course_contents?.map((item, index) => (
     <li key={index}>{item}</li>
   ));
 
   return (
-    <div className="course-content-box">
-      <h2>What you'll learn</h2>
-      {parsedContent.course_contents && (
-        <div className="centered-list">
-          <ul className="two-column-list">{courseContentList}</ul>
-        </div>
-      )}
-    </div>
+    parsedContent.course_contents && (
+      <div className="course-content-box">
+        <h2>What you'll learn</h2>
+        <ul className="two-column-list">{courseContentList}</ul>
+      </div>
+    )
   );
 };
 
@@ -41,7 +47,7 @@ const ProductPage = ({ course }) => {
       <CourseImage id={id} image={image} />
       <CourseContent content={content} />
       <ReadMore>{description}</ReadMore>
-     <Reviews reviews={Object.values(reviews)} course={course} />
+     {/* <Reviews reviews={Object.values(reviews)} course={course} /> */}
     </div>
   );
 };
