@@ -7,17 +7,10 @@ const Reviews = ({ reviews }) => {
   const navigate = useNavigate();
   const [visibleReviews, setVisibleReviews] = useState(3);
 
-  if (reviews === null || !Array.isArray(reviews) || reviews.length === 0) {
-    return (
-      <div>
-        <h2>Reviews</h2>
-        <p>Write a review!</p>
-      </div>
-    );
-  }
+  const reviewsArray = reviews.reviews;
 
   const handleSeeMore = () => {
-    if (visibleReviews >= reviews.length) {
+    if (visibleReviews >= reviewsArray.length) {
       navigate("/courses/reviews");
     } else {
       setVisibleReviews(visibleReviews + 3);
@@ -28,7 +21,7 @@ const Reviews = ({ reviews }) => {
     <div>
       <h2>Reviews</h2>
       <ul>
-        {reviews.slice(0, visibleReviews).map((review, index) => (
+        {reviewsArray.slice(0, visibleReviews).map((review, index) => (
           <li key={index}>
             <div className="review-header">
               <h3 className="review-title">{review.title}</h3>
@@ -44,7 +37,7 @@ const Reviews = ({ reviews }) => {
           </li>
         ))}
       </ul>
-      {reviews.length > visibleReviews && (
+      {reviewsArray.length > visibleReviews && (
         <button onClick={handleSeeMore}>See more reviews</button>
       )}
     </div>
