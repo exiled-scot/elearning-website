@@ -14,29 +14,29 @@ const CourseImage = ({ id, image }) => {
   return <img src={imageUrl} alt="image" className="card-image" />;
 };
 
-const CourseContent = ({ contents }) => {
-  if (contents === null) {
+const CourseContent = ({ content }) => {
+  if (content === null) {
     return null;
   }
 
-  let parsedContents;
+  let parsedContent;
 
   try {
-    parsedContents = contents instanceof Object ? contents : JSON.parse(contents);
+    parsedContent = content;
   } catch (error) {
-    console.error('Error parsing requirements:', error);
-    parsedContents = {};
+    console.error('Error parsing content:', error);
+    parsedContent = {};
   }
-  const courseContentsList = parsedContents.course_contents?.map((item, index) => (
+  const courseContentList = parsedContent.course_content?.map((item, index) => (
     <li key={index}>{item}</li>
   ));
 
-  if (parsedContents?.course_contents?.length > 0) {
+  if (parsedContent?.course_content?.length > 0) {
     return (
-      parsedContents.course_contents && (
-        <div>
+      parsedContent.course_content && (
+        <div className="two-column-list">
           <h2>What You'll Learn:</h2>
-          <ul>{courseContentsList}</ul>
+          <ul>{courseContentList}</ul>
         </div>
       )
     );
@@ -46,13 +46,19 @@ const CourseContent = ({ contents }) => {
 };
 
 const ProductPage = ({ course }) => {
-  const { title, id, image, content, description, requirements, reviews } = course;
+  const { title, id, instructor, image, content, description, requirements, reviews } = course;
 
   return (
     <div>
-      <CourseTitle title={title} />
       <CourseImage id={id} image={image} />
-      <CourseContent content={content} />
+      <CourseTitle title={title} />
+      <div>
+        <h2>{description.match(/^.+?[.!?](\s|$)/)[0]}</h2>
+      </div>
+      <div>
+        Created by <a href={`/users/${encodeURIComponent(instructor)}`}>{instructor}</a>
+      </div>
+      <CourseContent content={content} className="course-requirements" />
       <ReadMore>{description}</ReadMore>
       <Requirements requirements={requirements} />
       <Reviews reviews={reviews} />
