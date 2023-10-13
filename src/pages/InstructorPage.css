@@ -1,0 +1,42 @@
+.InstructorPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 50px;
+}
+
+.about-container {
+  grid-column: span 2;
+}
+
+.instructor-info {
+  grid-column: span 1;
+}
+
+.instructor-image-div {
+  grid-row: span 1;
+}
+
+.social-media-container {
+  grid-row: span 1;
+}
+
+.courses {
+  grid-column: span 2;
+}
+.first-column {
+    float: left;
+    width: 50%;
+    margin-right: 10px;
+}
+
+.second-column {
+    float: right;
+    width: 50%;
+}
+
+.profile-photo-circle {
+  width: 150px;
+  height: 150px;
+  background-color: lightgray;
+  border-radius: 50%;
+}
