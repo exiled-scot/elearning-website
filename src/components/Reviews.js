@@ -7,15 +7,24 @@ const Reviews = ({ reviews }) => {
   const navigate = useNavigate();
   const [visibleReviews, setVisibleReviews] = useState(3);
 
-  const reviewsArray = reviews.reviews;
+  const reviewsArray = reviews?.reviews;
 
   const handleSeeMore = () => {
-    if (visibleReviews >= reviewsArray.length) {
+    if (visibleReviews >= reviewsArray?.length) {
       navigate("/courses/reviews");
     } else {
       setVisibleReviews(visibleReviews + 3);
     }
   };
+
+  if (!reviewsArray || reviewsArray.length === 0) {
+    return (
+      <div>
+        <h3>Reviews</h3>
+        <p>Write a review!</p>
+      </div>
+    );
+  }
 
   return (
     <div>
