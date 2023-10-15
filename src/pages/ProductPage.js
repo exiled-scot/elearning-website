@@ -3,6 +3,7 @@ import Reviews from "../components/Reviews";
 import "./ProductPage.css";
 import ReadMore from "../components/ReadMore";
 import Requirements from "../components/Requirements";
+import slugify from "slugify";
 
 const CourseTitle = ({ title }) => {
   return <h1>{title}</h1>;
@@ -56,7 +57,7 @@ const ProductPage = ({ course }) => {
         <h2>{description.match(/^.+?[.!?](\s|$)/)[0]}</h2>
       </div>
       <div>
-        Created by <a href={`/users/${encodeURIComponent(instructor)}`}>{instructor}</a>
+        Created by <a href={`/users/${slugify(instructor)}`}>{instructor}</a>
       </div>
       <CourseContent content={content} className="course-requirements" />
       <ReadMore>{description}</ReadMore>
