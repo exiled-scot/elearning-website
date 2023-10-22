@@ -46,6 +46,31 @@ const CourseContent = ({ content }) => {
   return null;
 };
 
+const BuyCourse = ({ course }) => {
+  const { title, id, instructor, image, content, description, requirements, reviews } = course;
+
+  return (
+    <div className="buy-course--sidebar">
+      <CourseImage id={id} image={image} />
+      <div className="image-overlay">
+        <p>Preview this course</p>
+      </div>
+      <button className="buy-button">Buy this course</button>
+      <div className="sidebar-actions">
+        <div className="share-action">
+          <button className="share-button">Share</button>
+        </div>
+        <div className="gift-action">
+          <button className="gift-button">Gift this course</button>
+        </div>
+        <div className="coupon-action">
+          <button className="coupon-button">Apply Coupon</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const ProductPage = ({ course }) => {
   const { title, id, instructor, image, content, description, requirements, reviews } = course;
 
@@ -63,6 +88,7 @@ const ProductPage = ({ course }) => {
       <ReadMore>{description}</ReadMore>
       <Requirements requirements={requirements} />
       <Reviews reviews={reviews} />
+      <BuyCourse course={course} />
     </div>
   );
 };

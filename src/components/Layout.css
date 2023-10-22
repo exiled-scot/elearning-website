@@ -1,5 +1,4 @@
 .main-content {
-  margin: 80px 50px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -9,10 +8,6 @@
     flex: 1;
     display: grid;
     grid-template-rows: 1fr auto;
-}
-
-.main-content p {
-  margin-bottom: 1.5em;
 }
 
 .main-content h1,

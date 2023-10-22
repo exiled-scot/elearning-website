@@ -21,10 +21,6 @@
   margin-right: 2em;
 }
 
-.card-image {
-  padding-bottom: 20px; /* Add additional padding below the image */
-}
-
 .course-requirements {
   margin-top: 10px;
 }
@@ -34,3 +30,60 @@
   font-weight: bold;
   margin-bottom: 10px;
 }
+.card-image {
+  padding-bottom: 20px; /* Add additional padding below the image */
+}
+
+body {
+  margin: 5%;
+}
+/* Sidebar container */
+.buy-course--sidebar {
+   width: 300px; /* Adjust the width as needed */
+   background-color: #fff;
+   padding: 20px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+/* Course image */
+/* Preview course text */
+.preview-text {
+   position: absolute;
+   bottom: 10px;
+   padding: 10px;
+   background-color: rgba(0, 0, 0, 0.5);
+   color: #fff;
+   font-weight: bold;
+   border: 1px solid #000;
+}
+
+/* Buttons row */
+.buttons-row {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   margin-top: 20px;
+}
+
+/* Button style */
+.button {
+   padding: 10px 20px;
+   background-color: #f5f5f5;
+   color: #000;
+   border: none;
+   cursor: pointer;
+}
+
+/* Spacing between buttons */
+.button + .button {
+   margin-left: 10px;
+}
+
+.course-image {
+  width: 400px;
+  max-height: 400px;
+  object-fit: cover;
+}
+
