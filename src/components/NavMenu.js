@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './NavMenu.css';
 
 function NavMenu() {
@@ -9,6 +9,56 @@ function NavMenu() {
     technology: false,
     engineering: false
   });
+
+  const primaryNavRef = useRef(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (!primaryNavRef.current) return;
+
+      if (event.keyCode === 27) {
+        // ESC key: Close the menu
+        resetMenu();
+      } else if (event.keyCode === 37) {
+        // Left arrow key: Close the submenu
+        setShowSubmenu((prev) => ({
+          ...prev,
+          programming: false,
+          technology: false,
+          engineering: false
+        }));
+      } else if (event.keyCode === 39) {
+        // Right arrow key: Open the submenu of the selected category
+        setShowSubmenu((prev) => ({
+          ...prev,
+          [showCategories]: true
+        }));
+      } else if (event.keyCode === 40) {
+        // Down arrow key: Navigate to next item in the submenu
+        event.preventDefault();
+        const currentElement = document.activeElement;
+        if (currentElement.nextElementSibling) {
+          currentElement.nextElementSibling.focus();
+        } else {
+          currentElement.parentElement.firstElementChild.focus();
+        }
+      } else if (event.keyCode === 38) {
+        // Up arrow key: Navigate to previous item in the submenu
+        event.preventDefault();
+        const currentElement = document.activeElement;
+        if (currentElement.previousElementSibling) {
+          currentElement.previousElementSibling.focus();
+        } else {
+          currentElement.parentElement.lastElementChild.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [showCategories]);
 
   const toggleNav = () => {
     setShowNav(!showNav);
@@ -61,6 +111,8 @@ function NavMenu() {
             href="#"
             className={`logotype ${showCategories ? 'show' : ''}`}
             onClick={toggleCategories}
+            tabIndex="0"
+            ref={primaryNavRef}
           >
             Categories
             <span className={`downarrow ${showCategories ? 'open' : ''}`}>
@@ -72,13 +124,20 @@ function NavMenu() {
           {showCategories && (
             <ul className={`menu-dropdown ${showCategories ? 'open' : ''}`}>
               <li>
-                <a href="#" onClick={() => toggleSubmenu('programming')}>
+                <a
+                  href="#"
+                  onClick={() => toggleSubmenu('programming')}
+                  tabIndex={showSubmenu.programming ? '0' : '-1'}
+                >
                   Programming
                   <span className={`downarrow ${showSubmenu.programming ? 'open' : ''}`}>
                     <i className="fa fa-caret-down"></i>
                   </span>
                 </a>
-                <ul className={`sub-menu-dropdown ${showSubmenu.programming ? 'open' : ''}`}>
+                <ul
+                  className={`sub-menu-dropdown ${showSubmenu.programming ? 'open' : ''}`}
+                  tabIndex={showSubmenu.programming ? '0' : '-1'}
+                >
                   <li>
                     <a href="">Web Development</a>
                   </li>
@@ -96,13 +155,20 @@ function NavMenu() {
 
               {/* Technology submenu */}
               <li>
-                <a href="#" onClick={() => toggleSubmenu('technology')}>
+                <a
+                  href="#"
+                  onClick={() => toggleSubmenu('technology')}
+                  tabIndex={showSubmenu.technology ? '0' : '-1'}
+                >
                   Technology
                   <span className={`downarrow ${showSubmenu.technology ? 'open' : ''}`}>
                     <i className="fa fa-caret-down"></i>
                   </span>
                 </a>
-                <ul className={`sub-menu-dropdown ${showSubmenu.technology ? 'open' : ''}`}>
+                <ul
+                  className={`sub-menu-dropdown ${showSubmenu.technology ? 'open' : ''}`}
+                  tabIndex={showSubmenu.technology ? '0' : '-1'}
+                >
                   <li>
                     <a href="">Cybersecurity</a>
                   </li>
@@ -120,13 +186,20 @@ function NavMenu() {
 
               {/* Engineering submenu */}
               <li>
-                <a href="#" onClick={() => toggleSubmenu('engineering')}>
+                <a
+                  href="#"
+                  onClick={() => toggleSubmenu('engineering')}
+                  tabIndex={showSubmenu.engineering ? '0' : '-1'}
+                >
                   Engineering
                   <span className={`downarrow ${showSubmenu.engineering ? 'open' : ''}`}>
                     <i className="fa fa-caret-down"></i>
                   </span>
                 </a>
-                <ul className={`sub-menu-dropdown ${showSubmenu.engineering ? 'open' : ''}`}>
+                <ul
+                  className={`sub-menu-dropdown ${showSubmenu.engineering ? 'open' : ''}`}
+                  tabIndex={showSubmenu.engineering ? '0' : '-1'}
+                >
                   <li>
                     <a href="">Electrical</a>
                   </li>
