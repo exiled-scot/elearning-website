@@ -25,8 +25,17 @@ function NavMenu() {
     }));
   };
 
+  const resetMenu = () => {
+    setShowCategories(false);
+    setShowSubmenu({
+      programming: false,
+      technology: false,
+      engineering: false
+    });
+  };
+
   return (
-    <div className="primary-nav">
+    <div className="primary-nav" onMouseLeave={resetMenu}>
       <nav role="navigation" className="menu">
         <li>
           <a href="#">Dashboard</a>
