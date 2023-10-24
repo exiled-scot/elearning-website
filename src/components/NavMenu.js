@@ -100,7 +100,7 @@ function NavMenu() {
         <nav role="navigation" className="menu">
           {/* Dashboard */}
           <li aria-hidden={!showCategories}>
-            <a href="#">Dashboard</a>
+            <a href="/dashboard">Dashboard</a>
             <span className="icon">
               <i className="fa fa-dashboard"></i>
             </span>
@@ -125,7 +125,7 @@ function NavMenu() {
             <ul className={`menu-dropdown ${showCategories ? 'open' : ''}`}>
               <li>
                 <a
-                  href="#"
+                  href="/category/programming"
                   onClick={() => toggleSubmenu('programming')}
                   tabIndex={showSubmenu.programming ? '0' : '-1'}
                 >
@@ -139,16 +139,16 @@ function NavMenu() {
                   tabIndex={showSubmenu.programming ? '0' : '-1'}
                 >
                   <li>
-                    <a href="">Web Development</a>
+                    <a href="/category/programming/web-development">Web Development</a>
                   </li>
                   <li>
-                    <a href="">Mobile App Development</a>
+                    <a href="/category/programming/mobile-app-development">Mobile App Development</a>
                   </li>
                   <li>
-                    <a href="">Data Science</a>
+                    <a href="/category/programming/data-science">Data Science</a>
                   </li>
                   <li>
-                    <a href="">Game Development</a>
+                    <a href="/category/programming/game-development">Game Development</a>
                   </li>
                 </ul>
               </li>
@@ -156,7 +156,7 @@ function NavMenu() {
               {/* Technology submenu */}
               <li>
                 <a
-                  href="#"
+                  href="/category/technology"
                   onClick={() => toggleSubmenu('technology')}
                   tabIndex={showSubmenu.technology ? '0' : '-1'}
                 >
@@ -170,16 +170,16 @@ function NavMenu() {
                   tabIndex={showSubmenu.technology ? '0' : '-1'}
                 >
                   <li>
-                    <a href="">Cybersecurity</a>
+                    <a href="/category/technology/cybersecurity">Cybersecurity</a>
                   </li>
                   <li>
-                    <a href="">Cloud Computing</a>
+                    <a href="/category/technology/cloud-computing">Cloud Computing</a>
                   </li>
                   <li>
-                    <a href="">Internet of Things (IoT)</a>
+                    <a href="/category/technology/iot">Internet of Things (IoT)</a>
                   </li>
                   <li>
-                    <a href="">Artificial Intelligence (AI)</a>
+                    <a href="/category/technology/ai">Artificial Intelligence (AI)</a>
                   </li>
                 </ul>
               </li>
@@ -187,7 +187,7 @@ function NavMenu() {
               {/* Engineering submenu */}
               <li>
                 <a
-                  href="#"
+                  href="/category/engineering"
                   onClick={() => toggleSubmenu('engineering')}
                   tabIndex={showSubmenu.engineering ? '0' : '-1'}
                 >
@@ -201,16 +201,16 @@ function NavMenu() {
                   tabIndex={showSubmenu.engineering ? '0' : '-1'}
                 >
                   <li>
-                    <a href="">Electrical</a>
+                    <a href="/category/engineering/electrical">Electrical</a>
                   </li>
                   <li>
-                    <a href="">Mechanical</a>
+                    <a href="/category/engineering/mechanical">Mechanical</a>
                   </li>
                   <li>
-                    <a href="">Civil</a>
+                    <a href="/category/engineering/civil">Civil</a>
                   </li>
                   <li>
-                    <a href="">Chemical</a>
+                    <a href="/category/engineering/chemical">Chemical</a>
                   </li>
                 </ul>
               </li>
