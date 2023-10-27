@@ -98,14 +98,6 @@ function NavMenu() {
     >
       {showNav && (
         <nav role="navigation" className="menu">
-          {/* Dashboard */}
-          <li aria-hidden={!showCategories}>
-            <a href="/dashboard">Dashboard</a>
-            <span className="icon">
-              <i className="fa fa-dashboard"></i>
-            </span>
-          </li>
-
           {/* Categories */}
           <a
             href="#"
@@ -119,6 +111,14 @@ function NavMenu() {
               <i className="fa fa-caret-down"></i>
             </span>
           </a>
+
+          {/* Dashboard */}
+          <li aria-hidden={!showCategories}>
+            <a href="/dashboard">Dashboard</a>
+            <span className="icon">
+              <i className="fa fa-dashboard"></i>
+            </span>
+          </li>
 
           {/* Programming submenu */}
           {showCategories && (
