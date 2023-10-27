@@ -14,16 +14,6 @@ export const getRecords = async (endpoint) => {
 };
 
 export const getRecordsByCategory = async (endpoint, category) => {
-  try {
-    const response = await fetch(`${BASE_URL}/api/collections/${endpoint}/records?perPage=100`);
-    const data = await response.json();
-    const filteredRecords = data.items.filter((record) => {
-      return record.category && record.category.name === category.name;
-    });
-
-    return filteredRecords;
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
+  // take the response below and turn it into an array of Courses
+  // const response = await fetch(`${BASE_URL}/api/collections/${endpoint}/records?perPage=100`);
 };
