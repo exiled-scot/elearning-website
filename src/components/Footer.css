@@ -1,48 +1,24 @@
+.footer-column-title {
+  font-weight: bold;
+}
+
+.footer-link {
+  margin-bottom: 5px;
+}
+
 .footer {
-  background-color: #000000;
-  color: #ffffff !important;
-  padding: 50px 20px;
+  background-color: black;
+  color: white;
   display: flex;
   justify-content: space-between;
+  padding: 20px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 .footer-column {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-}
-
-.footer-heading {
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-
-.footer-list {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-list li {
-  margin-bottom: 8px;
-}
-
-.footer-column:first-child {
-  margin-right: auto;
-}
-
-.footer-column:last-child {
-  margin-left: auto;
-}
-
-.footer-copyright {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 14px;
-}
-
-/* Additional styling for responsive design or other customizations can be added here */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
 }
