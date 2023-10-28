@@ -1,7 +1,7 @@
 .navbar {
   position: fixed;
   left: 0;
-  top: 0;
+  top: 60px;
   width: 8vh;
   height: 100vh;
   background-color: #fff;
@@ -24,17 +24,34 @@
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  padding: 10px;
-  color: #888;
+  padding: 20px;
+  color: black;
   transition: background-color 0.3s;
+  white-space: nowrap; /* prevent text from wrapping */
+  overflow: hidden; /* hide overflowing text */
+  text-overflow: ellipsis; /* show ellipsis (...) for overflow */
+}
+.nav-text {
+  font-size: 12px;
+  text-align: center;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .nav-link:hover {
   background-color: #f1f1f1;
+  box-shadow: none; /* remove shadow from all links */
+}
+
+.nav-link.active:hover {
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.1); /* add shadow only to active link */
+}
+.nav-link:hover {
+  background-color: rgba(0,0,0,0.1);
 }
 
 .active {
-  background-color: #f1f1f1;
   font-weight: bold;
 }
 
@@ -43,10 +60,6 @@
   margin-bottom: 5px;
 }
 
-.nav-text {
-  font-size: 12px;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.nav-item {
+  margin-bottom: 20px; /* increase the margin-bottom value to create more space */
 }
