@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './Header.css';
 import { Link } from "react-router-dom";
-import SignUp from "../pages/SignUp"; // Import the SignUp component
+import SignUp from "./SignUp";
 
 const Header = () => {
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false); // Add state variable
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
 
   const openSignUpModal = () => {
     setIsSignUpOpen(true);
@@ -20,8 +20,8 @@ const Header = () => {
         <h1 className="header-title">eLearn</h1>
       </Link>
       <div className="header-buttons">
-        <Link to="/login" className="action-button">Log in</Link>
-        <button onClick={openSignUpModal} className="action-button">Sign Up</button>
+        <button className="action-button button-28">Log in</button>
+        <button onClick={openSignUpModal} className="action-button button-28">Sign Up</button>
       </div>
       {isSignUpOpen && <SignUp closeModal={closeSignUpModal} />}
     </header>

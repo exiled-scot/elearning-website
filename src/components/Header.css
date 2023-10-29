@@ -1,9 +1,14 @@
 .header {
+  top: 0;
+  right: 0;
+  height: 60px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: #f9f9f9;
-  padding: 10px;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 0 20px;
+  z-index: 999;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .header-title {
@@ -13,14 +18,6 @@
 .header-buttons {
   display: flex;
   gap: 10px;
-}
-
-.action-button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
 }
 
 .header {
@@ -59,14 +56,48 @@
   display: flex;
 }
 
-.action-button {
-  margin-left: 10px;
-  border: none;
-  background-color: #0048b3;
-  color: #ffffff;
-  padding: 10px 15px;
-  border-radius: 4px;
+/* Additional styling for responsive design or other customizations can be added here */
+/* CSS */
+.button-28 {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #3B3B3B;
   cursor: pointer;
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 20px;
+  min-width: 0;
+  outline: none;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 10;
+  will-change: transform;
 }
 
-/* Additional styling for responsive design or other customizations can be added here */
+.button-28:disabled {
+  pointer-events: none;
+}
+
+.button-28:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-28:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
