@@ -13,3 +13,8 @@ yarn-error.log*
 .eslintcache
 
 notes.org*
+
+data.db-shm
+data.db-wal
+logs.db
+logs.db-shm
