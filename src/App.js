@@ -9,6 +9,7 @@ import { getRecords } from "./api/api.js";
 import InstructorPage from "./pages/InstructorPage";
 import Categories from "./pages/Categories";
 import { Course } from "./api/models/Course";
+import SignUp from "./pages/SignUp";
 
 const App = () => {
   const [courses, setCourses] = useState([]);
