@@ -15,6 +15,7 @@ const Header = () => {
   };
 
   return (
+    <div className="container">
     <header className="header">
       <Link to="/">
         <h1 className="header-title">eLearn</h1>
@@ -25,6 +26,7 @@ const Header = () => {
       </div>
       {isSignUpOpen && <SignUp closeModal={closeSignUpModal} />}
     </header>
+    </div>
   );
 };
 

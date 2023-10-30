@@ -1,78 +1,16 @@
-.header {
-  top: 0;
-  right: 0;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #ffffff;
-  padding: 0 20px;
-  z-index: 999;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.header-title {
-  margin: 0;
-}
-
-.header-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #ffffff;
-  padding: 0 20px;
-  z-index: 999;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.burger-menu {
-  display: flex;
-  align-items: center;
-}
-
-.burger-button {
-  border: none;
-  background: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.header-title {
-  text-align: center;
-  margin: 0;
-}
-
-.header-buttons {
-  display: flex;
-}
-
-/* Additional styling for responsive design or other customizations can be added here */
-/* CSS */
 .button-28 {
   appearance: none;
   background-color: transparent;
-  border: 2px solid #1A1A1A;
+  border: 2px solid #1a1a1a;
   border-radius: 15px;
   box-sizing: border-box;
-  color: #3B3B3B;
+  color: #3b3b3b;
   cursor: pointer;
   display: inline-block;
   font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
-  margin: 0;
-  min-height: 20px;
   min-width: 0;
   outline: none;
   padding: 8px;
@@ -82,8 +20,17 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 10;
+  width: 100px;
   will-change: transform;
+  margin-right: 10px;
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: end;
+  margin-right: 2em;
+  margin-top: 1em;
+  gap: 10px;
 }
 
 .button-28:disabled {
@@ -92,7 +39,7 @@
 
 .button-28:hover {
   color: #fff;
-  background-color: #1A1A1A;
+  background-color: #1a1a1a;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
@@ -100,4 +47,30 @@
 .button-28:active {
   box-shadow: none;
   transform: translateY(0);
+}
+
+.header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header {
+  background-color: white;
+  border: 1px solid black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 9999;
+}
+
+.header-title {
+  font-size: 28px;
+  text-align: center;
+}
+
+.container {
+  top: -10%;
 }
