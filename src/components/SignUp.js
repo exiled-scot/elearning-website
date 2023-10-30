@@ -63,12 +63,9 @@ const SignUp = ({ closeModal }) => {
             zIndex: 1000,
           },
           content: {
-            width: "400px",
-            height: "300px",
+            width: "50%",
+            height: "50%",
             position: "relative",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
             zIndex: 1001,
           },
         }}
