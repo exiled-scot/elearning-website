@@ -66,6 +66,12 @@ const App = () => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/dashboard" element={<h1>Dashboard page</h1>} />
           <Route path="/mylearning" element={<MyLearning />}/>
+          <Route path="/explore" element={<MyLearning />}/>
+           <Route path="/labs" element={<MyLearning />}/>
+           <Route path="/paths" element={<MyLearning />}/>
+           <Route path="/skills" element={<MyLearning />}/>
+           <Route path="/assessments" element={<MyLearning />}/>
+
           {/* Add dynamic routes for each category */}
           {categories.map((category) => (
             <Route
