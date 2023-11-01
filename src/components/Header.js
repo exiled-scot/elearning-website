@@ -5,23 +5,25 @@ import SignUp from "./SignUp";
 import Login from "./Login";
 
 const Header = () => {
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false); // Remove unused variable
-  const [isLoginOpen, setIsLoginOpen] = useState(false); // Add missing useState initialization
-
-  const openSignUpModal = () => {
-    setIsSignUpOpen(true);
-  };
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   const closeSignUpModal = () => {
     setIsSignUpOpen(false);
   };
 
-  const openLoginModal = () => {
-    setIsLoginOpen(true);
-  };
-
   const closeLoginModal = () => {
     setIsLoginOpen(false);
+  };
+
+  const openSignUpModal = () => {
+    setIsLoginOpen(false);
+    setIsSignUpOpen(true);
+  };
+
+  const openLoginModal = () => {
+    setIsSignUpOpen(false);
+    setIsLoginOpen(true);
   };
 
   return (
@@ -46,7 +48,7 @@ const Header = () => {
         </div>
       </header>
       {isSignUpOpen && <SignUp closeModal={closeSignUpModal} />}
-      {isLoginOpen && <Login closeModal={closeLoginModal} />} // Add the missing Login component
+      {isLoginOpen && <Login closeModal={closeLoginModal} />}
     </div>
   );
 };
