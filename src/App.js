@@ -9,6 +9,7 @@ import { getRecords } from "./api/api.js";
 import InstructorPage from "./pages/InstructorPage";
 import Categories from "./pages/Categories";
 import { Course } from "./api/models/Course";
+import MyLearning from "./pages/MyLearning";
 
 const App = () => {
   const [courses, setCourses] = useState([]);
@@ -64,6 +65,13 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/dashboard" element={<h1>Dashboard page</h1>} />
+          <Route path="/mylearning" element={<MyLearning />}/>
+          <Route path="/explore" element={<MyLearning />}/>
+           <Route path="/labs" element={<MyLearning />}/>
+           <Route path="/paths" element={<MyLearning />}/>
+           <Route path="/skills" element={<MyLearning />}/>
+           <Route path="/assessments" element={<MyLearning />}/>
+
           {/* Add dynamic routes for each category */}
           {categories.map((category) => (
             <Route

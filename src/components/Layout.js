@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 import './Layout.css'; // Make sure the path to Layout.css is correct
 import NavMenu from '../components/NavMenu';
 
@@ -8,11 +7,10 @@ function Layout({ children }) {
   return (
     <div>
       <Header />
-      <NavMenu />
       <div className="main-content">
         {children}
       </div>
-      <Footer />
+      <NavMenu />
     </div>
   );
 }

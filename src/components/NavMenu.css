@@ -1,9 +1,9 @@
 .navbar {
   position: fixed;
   left: 0;
-  top: 60px;
+  top: 80px;
   width: 8vh;
-  height: 100vh;
+  height: calc(100vh - 240px); /* Adjusted to leave space for the footer */
   background-color: #fff;
   border-right: 1px solid #ccc;
   z-index: 1;

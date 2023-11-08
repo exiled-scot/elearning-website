@@ -1,0 +1,22 @@
+.input-container {
+  text-align: left;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  display: block;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.red-text-alert {
+  color: red;
+}
+
+.error-message {
+  font-weight: bold;
+  color: red;
+  text-align: center;
+}
