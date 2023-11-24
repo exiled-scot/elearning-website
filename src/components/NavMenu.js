@@ -20,13 +20,13 @@ const NavMenu = () => {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/labs" className="nav-link" activeClassName="active">
+          <NavLink to="/cloudlabs" className="nav-link" activeClassName="active">
             <FiCloud className="nav-icon" />
             <span className="nav-text">Cloud Labs</span>
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/paths" className="nav-link" activeClassName="active">
+          <NavLink to="/personalisedpaths" className="nav-link" activeClassName="active">
             <FiUser className="nav-icon" />
             <span className="nav-text">Personalised Paths</span>
           </NavLink>
@@ -38,7 +38,7 @@ const NavMenu = () => {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/skills" className="nav-link" activeClassName="active">
+          <NavLink to="/skillpaths" className="nav-link" activeClassName="active">
             <FiLayers className="nav-icon" />
             <span className="nav-text">Skill Paths</span>
           </NavLink>

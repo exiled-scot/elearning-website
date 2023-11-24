@@ -10,37 +10,43 @@ import InstructorPage from "./pages/InstructorPage";
 import Categories from "./pages/Categories";
 import { Course } from "./api/models/Course";
 import MyLearning from "./pages/MyLearning";
+import Explore from "./pages/Explore";
+import CloudLabs from "./pages/CloudLabs";
+import PersonalisedPaths from "./pages/PersonalisedPaths";
+import Projects from "./pages/Projects";
+import SkillPaths from "./pages/SkillPaths";
+import Assessments from "./pages/Assessments";
 
 const App = () => {
   const [courses, setCourses] = useState([]);
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-  const fetchData = async () => {
-    const coursesData = await getRecords("courses");
-    const instructorsData = await getRecords("instructors");
+    const fetchData = async () => {
+      const coursesData = await getRecords("courses");
+      const instructorsData = await getRecords("instructors");
 
-    const courses = coursesData.map((courseData) => {
-      const course = new Course(
-        courseData.categories,
-        courseData.collectionName,
-        courseData.content,
-        courseData.courseContent,
-        courseData.created,
-        courseData.description,
-        courseData.id,
-        courseData.image,
-        courseData.instructor,
-        courseData.requirements,
-        courseData.reviews,
-        courseData.title
-      );
-      return course;
-    });
+      const courses = coursesData.map((courseData) => {
+        const course = new Course(
+          courseData.categories,
+          courseData.collectionName,
+          courseData.content,
+          courseData.courseContent,
+          courseData.created,
+          courseData.description,
+          courseData.id,
+          courseData.image,
+          courseData.instructor,
+          courseData.requirements,
+          courseData.reviews,
+          courseData.title
+        );
+        return course;
+      });
 
-    setCourses(courses);
-    setInstructors(instructorsData);
-  };
+      setCourses(courses);
+      setInstructors(instructorsData);
+    };
 
     fetchData();
   }, []);
@@ -48,7 +54,7 @@ const App = () => {
   const categories = [
     { name: "Programming", slug: "programming" },
     { name: "Technology", slug: "technology" },
-    { name: "Engineering", slug: "engineering" }
+    { name: "Engineering", slug: "engineering" },
   ];
 
   const createSlug = (text) => {
@@ -65,12 +71,13 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/dashboard" element={<h1>Dashboard page</h1>} />
-          <Route path="/mylearning" element={<MyLearning />}/>
-          <Route path="/explore" element={<MyLearning />}/>
-           <Route path="/labs" element={<MyLearning />}/>
-           <Route path="/paths" element={<MyLearning />}/>
-           <Route path="/skills" element={<MyLearning />}/>
-           <Route path="/assessments" element={<MyLearning />}/>
+          <Route path="/mylearning" element={<MyLearning />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/cloudlabs" element={<CloudLabs />} />
+          <Route path="/personalisedpaths" element={<PersonalisedPaths />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/skillpaths" element={<SkillPaths />} />
+          <Route path="/assessments" element={<Assessments />} />
 
           {/* Add dynamic routes for each category */}
           {categories.map((category) => (
@@ -80,6 +87,7 @@ const App = () => {
               element={<Categories categories={category.name} />}
             />
           ))}
+
           {/* Add product routes */}
           {courses.map((course) => (
             <Route
@@ -88,6 +96,7 @@ const App = () => {
               element={<ProductPage course={course} />}
             />
           ))}
+
           {/* Add instructor routes */}
           {instructors.map((instructor) => (
             <Route
