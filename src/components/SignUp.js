@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Modal from 'react-modal';
-import "./SignUp.css";
+import Modal from "react-modal";
 
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 
 const SignUp = ({ closeModal }) => {
   const [email, setEmail] = useState("");
@@ -14,7 +13,7 @@ const SignUp = ({ closeModal }) => {
   const [firstNameIsValid, setFirstNameIsValid] = useState(true);
   const [passwordIsValid, setPasswordIsValid] = useState(true);
   const [retypePasswordIsValid, setRetypePasswordIsValid] = useState(true);
-  const [isActive, setIsActive] = useState(false); // Added state for is-active
+  const [isActive, setIsActive] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,7 +54,7 @@ const SignUp = ({ closeModal }) => {
   };
 
   const handleButtonClick = () => {
-    setIsActive(true); // Activate is-active on button click
+    setIsActive(true);
   };
 
   return (
@@ -79,9 +78,25 @@ const SignUp = ({ closeModal }) => {
           },
         }}
       >
-        <form onSubmit={handleSubmit}>
-          <div className={`input-container ${isActive ? "is-active" : ""}`}>
-            <label className="label" style={{textAlign: 'right', marginRight: '10px'}}>Email Address</label>
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            columnGap: "10px",
+            rowGap: "20px",
+          }}
+        >
+          <label
+            className="label"
+            style={{ textAlign: "left", marginRight: "10px" }}
+          >
+            Email Address
+          </label>
+          <div
+            className={`input-container ${isActive ? "is-active" : ""}`}
+            style={{ gridColumn: "2", margin: "5px 0" }}
+          >
             <input
               type="email"
               value={email}
@@ -91,8 +106,16 @@ const SignUp = ({ closeModal }) => {
               <p className="red-text-alert">Invalid email address.</p>
             )}
           </div>
-          <div className="input-container" style={{display: 'flex', alignItems: 'center'}}>
-            <label className="label" style={{textAlign: 'right', marginRight: '10px'}}>First Name</label>
+          <label
+            className="label"
+            style={{ textAlign: "left", marginRight: "10px" }}
+          >
+            First Name
+          </label>
+          <div
+            className={`input-container ${isActive ? "is-active" : ""}`}
+            style={{ display: "flex", alignItems: "center" }}
+          >
             <input
               type="text"
               value={firstName}
@@ -102,8 +125,16 @@ const SignUp = ({ closeModal }) => {
               <p className="red-text-alert">Invalid first name.</p>
             )}
           </div>
-          <div className="input-container" style={{display: 'flex', alignItems: 'center'}}>
-            <label className="label" style={{textAlign: 'right', marginRight: '10px'}}>Password</label>
+          <label
+            className="label"
+            style={{ textAlign: "left", marginRight: "10px" }}
+          >
+            Password
+          </label>
+          <div
+            className={`input-container ${isActive ? "is-active" : ""}`}
+            style={{ display: "flex", alignItems: "center" }}
+          >
             <input
               type="password"
               value={password}
@@ -113,8 +144,16 @@ const SignUp = ({ closeModal }) => {
               <p className="red-text-alert">Invalid password.</p>
             )}
           </div>
-          <div className="input-container" style={{display: 'flex', alignItems: 'center'}}>
-            <label className="label" style={{textAlign: 'right', marginRight: '10px'}}>Retype Password</label>
+          <label
+            className="label"
+            style={{ textAlign: "left", marginRight: "10px" }}
+          >
+            Retype Password
+          </label>
+          <div
+            className={`input-container ${isActive ? "is-active" : ""}`}
+            style={{ display: "flex", alignItems: "center" }}
+          >
             <input
               type="password"
               value={retypePassword}
@@ -126,9 +165,16 @@ const SignUp = ({ closeModal }) => {
           </div>
           <button
             type="submit"
-            style={{color: 'black'}}
-            className={isActive ? "is-active" : ""} // Apply is-active class
-            onClick={handleButtonClick} // Handle button click
+            style={{
+              color: "black",
+              justifySelf: "end",
+              marginTop: "20px",
+              width: "150px",
+              height: "50px",
+              position: "absolute",
+              bottom: 10,
+              right: 10,
+            }}
           >
             Register
           </button>
