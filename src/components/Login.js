@@ -46,15 +46,17 @@ const Login = ({ closeModal }) => {
         contentLabel="Login Modal"
         style={{
           overlay: {
-            // Other styles...
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
           },
           content: {
             width: "20%",
             height: "40%",
             position: "relative",
             zIndex: 1001,
-            borderRadius: "10px",
-            boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
+            borderRadius: "10px", // Set the corner radius value here
           },
         }}
       >
