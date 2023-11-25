@@ -52,17 +52,19 @@ const Login = ({ closeModal }) => {
             zIndex: 1000,
           },
           content: {
-            width: "20%",
-            height: "40%",
+            width: "40%", // Modified as per the request
+            height: "40%", // Modified as per the request
             position: "relative",
             zIndex: 1001,
-            borderRadius: "10px", // Set the corner radius value here
+            borderRadius: "20px", // Set the corner radius value here
           },
         }}
       >
         <form
           onSubmit={handleSubmit}
           style={{
+            padding: "40px",
+            margin: "40px",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
             columnGap: "10px",
