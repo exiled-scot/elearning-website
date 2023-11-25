@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 
 const Login = ({ closeModal }) => {
   const [email, setEmail] = useState("");
@@ -46,40 +46,62 @@ const Login = ({ closeModal }) => {
         contentLabel="Login Modal"
         style={{
           overlay: {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 1000,
+            // Other styles...
           },
           content: {
             width: "20%",
             height: "40%",
             position: "relative",
             zIndex: 1001,
+            borderRadius: "10px",
+            boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
           },
         }}
       >
-
-        <form onSubmit={handleSubmit} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '10px', rowGap: '20px' }}>
-          <label className="label" style={{ textAlign: 'left', marginRight: '10px', width: '100px' }}>Email: </label>
-          <div className="input-container" style={{ gridColumn: '2', margin: '5px 0' }}>
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            columnGap: "10px",
+            rowGap: "20px",
+          }}
+        >
+          <label
+            className="label"
+            style={{ textAlign: "left", marginRight: "10px", width: "100px" }}
+          >
+            Email:{" "}
+          </label>
+          <div
+            className="input-container"
+            style={{ gridColumn: "2", margin: "5px 0" }}
+          >
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              style={{ width: '100%', marginRight: '10px' }}
+              style={{ width: "100%", marginRight: "10px" }}
             />
             {!emailIsValid && (
               <p className="red-text-alert">Invalid email address.</p>
             )}
           </div>
-          <label className="label" style={{ textAlign: 'left', marginRight: '10px', width: '100px' }}>Password: </label>
-          <div className="input-container" style={{ gridColumn: '2', margin: '5px 0' }}>
+          <label
+            className="label"
+            style={{ textAlign: "left", marginRight: "10px", width: "100px" }}
+          >
+            Password:{" "}
+          </label>
+          <div
+            className="input-container"
+            style={{ gridColumn: "2", margin: "5px 0" }}
+          >
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              style={{ width: '100%', marginRight: '10px' }}
+              style={{ width: "100%", marginRight: "10px" }}
             />
             {!passwordIsValid && (
               <p className="red-text-alert">Invalid password.</p>
@@ -87,15 +109,16 @@ const Login = ({ closeModal }) => {
           </div>
           <button
             type="submit"
+            className="button-28"
             style={{
-              color: 'black',
-              justifySelf: 'end',
-              marginTop: '20px',
-              width: '150px',
-              height: '50px',
-              position: 'absolute',
-              bottom: 10,
-              right: 10,
+              justifySelf: "center",
+              marginTop: "20px",
+              width: "150px",
+              height: "50px",
+              position: "absolute",
+              bottom: 20,
+              left: "50%",
+              transform: "translateX(-50%)",
             }}
           >
             Log in

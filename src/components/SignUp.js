@@ -63,6 +63,7 @@ const SignUp = ({ closeModal }) => {
         isOpen={true}
         onRequestClose={closeModal}
         contentLabel="Sign Up Modal"
+
         style={{
           overlay: {
             display: "flex",
@@ -75,6 +76,7 @@ const SignUp = ({ closeModal }) => {
             height: "50%",
             position: "relative",
             zIndex: 1001,
+            borderRadius: "10px", // Set the corner radius value here
           },
         }}
       >
@@ -91,7 +93,7 @@ const SignUp = ({ closeModal }) => {
             className="label"
             style={{ textAlign: "left", marginRight: "10px" }}
           >
-            Email Address
+            Email:
           </label>
           <div
             className={`input-container ${isActive ? "is-active" : ""}`}
@@ -110,7 +112,7 @@ const SignUp = ({ closeModal }) => {
             className="label"
             style={{ textAlign: "left", marginRight: "10px" }}
           >
-            First Name
+            First Name:
           </label>
           <div
             className={`input-container ${isActive ? "is-active" : ""}`}
@@ -129,7 +131,7 @@ const SignUp = ({ closeModal }) => {
             className="label"
             style={{ textAlign: "left", marginRight: "10px" }}
           >
-            Password
+            Password:
           </label>
           <div
             className={`input-container ${isActive ? "is-active" : ""}`}
@@ -148,7 +150,7 @@ const SignUp = ({ closeModal }) => {
             className="label"
             style={{ textAlign: "left", marginRight: "10px" }}
           >
-            Retype Password
+            Retype Password:
           </label>
           <div
             className={`input-container ${isActive ? "is-active" : ""}`}
@@ -165,18 +167,19 @@ const SignUp = ({ closeModal }) => {
           </div>
           <button
             type="submit"
+            className="button-28"
             style={{
-              color: "black",
-              justifySelf: "end",
+              justifySelf: "center",
               marginTop: "20px",
               width: "150px",
               height: "50px",
               position: "absolute",
-              bottom: 10,
-              right: 10,
+              bottom: 20,
+              left: "50%",
+              transform: "translateX(-50%)",
             }}
           >
-            Register
+            Register:
           </button>
         </form>
       </Modal>
