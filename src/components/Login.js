@@ -1,41 +1,24 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import PocketBase from "pocketbase";
+import { authenticate, isAuthenticated, getToken, getUserId } from "../auth.js";
 
 Modal.setAppElement("#root");
 
 const Login = ({ closeModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isValid, setIsValid] = useState(true);
-  const [emailIsValid, setEmailIsValid] = useState(true);
-  const [passwordIsValid, setPasswordIsValid] = useState(true);
+  const [emailIsValid, setEmailIsValid] = useState(true); // Define emailIsValid state
+  const [passwordIsValid, setPasswordIsValid] = useState(true); // Define passwordIsValid state
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (
-      email === "" ||
-      password === "" ||
-      !isValidEmail(email) ||
-      !isValidPassword(password)
-    ) {
-      setIsValid(false);
-      setEmailIsValid(!isValidEmail(email));
-      setPasswordIsValid(!isValidPassword(password));
-    } else {
-      alert("Success!");
-      closeModal();
+    try {
+      const authData = await authenticate(email, password);
+    } catch (err) {
+      setError("Invalid credentials");
     }
-  };
-
-  const isValidEmail = (email) => {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
-  };
-
-  const isValidPassword = (password) => {
-    const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d]{10,}$/;
-    return passwordPattern.test(password);
   };
 
   return (
@@ -111,22 +94,25 @@ const Login = ({ closeModal }) => {
               <p className="red-text-alert">Invalid password.</p>
             )}
           </div>
-          <button
-            type="submit"
-            className="button-28"
-            style={{
-              justifySelf: "center",
-              marginTop: "20px",
-              width: "150px",
-              height: "50px",
-              position: "absolute",
-              bottom: 20,
-              left: "50%",
-              transform: "translateX(-50%)",
-            }}
-          >
-            Log in
-          </button>
+          <div>
+            <button
+              type="submit"
+              className="button-28"
+              style={{
+                justifySelf: "center",
+                marginTop: "20px",
+                width: "150px",
+                height: "50px",
+                position: "absolute",
+                bottom: 20,
+                left: "50%",
+                transform: "translateX(-50%)",
+              }}
+            >
+              Log in
+            </button>
+            {error && <div style={{ color: "red" }}>{error}</div>}
+          </div>
         </form>
       </Modal>
     </div>
