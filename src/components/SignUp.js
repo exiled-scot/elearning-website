@@ -1,41 +1,49 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import PocketBase from "pocketbase";
+import "../App.css";
 
 Modal.setAppElement("#root");
 
+const pb = new PocketBase("http://127.0.0.1:5002");
+
 const SignUp = ({ closeModal }) => {
   const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [retypePassword, setRetypePassword] = useState("");
-  const [isValid, setIsValid] = useState(true);
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [error, setError] = useState("");
   const [emailIsValid, setEmailIsValid] = useState(true);
-  const [firstNameIsValid, setFirstNameIsValid] = useState(true);
+  const [usernameIsValid, setUsernameIsValid] = useState(true);
   const [passwordIsValid, setPasswordIsValid] = useState(true);
-  const [retypePasswordIsValid, setRetypePasswordIsValid] = useState(true);
+  const [passwordConfirmIsValid, setPasswordConfirmIsValid] = useState(true);
   const [isActive, setIsActive] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (
-      email === "" ||
-      firstName === "" ||
-      password === "" ||
-      retypePassword === "" ||
-      password !== retypePassword ||
-      !isValidEmail(email) ||
-      !isValidFirstName(firstName) ||
-      !isValidPassword(password)
+      !emailIsValid ||
+      !usernameIsValid ||
+      !passwordIsValid ||
+      !passwordConfirmIsValid
     ) {
-      setIsValid(false);
-      setEmailIsValid(!isValidEmail(email));
-      setFirstNameIsValid(!isValidFirstName(firstName));
-      setPasswordIsValid(!isValidPassword(password));
-      setRetypePasswordIsValid(password !== retypePassword);
-    } else {
-      alert("Success!");
+      return;
+    }
+
+    try {
+      const data = {
+        email,
+        username,
+        emailVisibility: true,
+        password,
+        passwordConfirm,
+      };
+
+      await pb.collection("users").create(data);
       closeModal();
+    } catch (err) {
+      setError("There was an error");
     }
   };
 
@@ -44,18 +52,16 @@ const SignUp = ({ closeModal }) => {
     return emailPattern.test(email);
   };
 
-  const isValidFirstName = (firstName) => {
-    return /^[A-Za-z\s]+$/.test(firstName);
+  const isValidUsername = (username) => {
+    return /^[a-zA-Z0-9]+$/.test(username);
   };
 
   const isValidPassword = (password) => {
-    const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d]{10,}$/;
+    const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
     return passwordPattern.test(password);
   };
 
-  const handleButtonClick = () => {
-    setIsActive(true);
-  };
+  // Rest of the component
 
   return (
     <div>
@@ -63,7 +69,6 @@ const SignUp = ({ closeModal }) => {
         isOpen={true}
         onRequestClose={closeModal}
         contentLabel="Sign Up Modal"
-
         style={{
           overlay: {
             display: "flex",
@@ -73,10 +78,10 @@ const SignUp = ({ closeModal }) => {
           },
           content: {
             width: "40%",
-            height: "40%", // Modified as per the request
+            height: "40%",
             position: "relative",
             zIndex: 1001,
-            borderRadius: "20px", // Set the corner radius value here
+            borderRadius: "20px",
           },
         }}
       >
@@ -88,7 +93,7 @@ const SignUp = ({ closeModal }) => {
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
             columnGap: "10px",
-            rowGap: "20px"
+            rowGap: "20px",
           }}
         >
           <label
@@ -114,7 +119,7 @@ const SignUp = ({ closeModal }) => {
             className="label"
             style={{ textAlign: "left", marginRight: "10px" }}
           >
-            First Name:
+            Username:
           </label>
           <div
             className={`input-container ${isActive ? "is-active" : ""}`}
@@ -122,11 +127,11 @@ const SignUp = ({ closeModal }) => {
           >
             <input
               type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
-            {!firstNameIsValid && (
-              <p className="red-text-alert">Invalid first name.</p>
+            {!usernameIsValid && (
+              <p className="red-text-alert">Invalid username.</p>
             )}
           </div>
           <label
@@ -152,7 +157,7 @@ const SignUp = ({ closeModal }) => {
             className="label"
             style={{ textAlign: "left", marginRight: "10px" }}
           >
-            Retype Password:
+            Confirm Password:
           </label>
           <div
             className={`input-container ${isActive ? "is-active" : ""}`}
@@ -160,13 +165,14 @@ const SignUp = ({ closeModal }) => {
           >
             <input
               type="password"
-              value={retypePassword}
-              onChange={(e) => setRetypePassword(e.target.value)}
+              value={passwordConfirm}
+              onChange={(e) => setPasswordConfirm(e.target.value)}
             />
-            {!retypePasswordIsValid && (
+            {!passwordConfirmIsValid && (
               <p className="red-text-alert">Passwords do not match.</p>
             )}
           </div>
+          {error && <p className="red-text-alert">{error}</p>}
           <button
             type="submit"
             className="button-28"
@@ -181,7 +187,7 @@ const SignUp = ({ closeModal }) => {
               transform: "translateX(-50%)",
             }}
           >
-            Register:
+            Register
           </button>
         </form>
       </Modal>
