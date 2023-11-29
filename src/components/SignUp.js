@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import PocketBase from "pocketbase";
 import "../App.css";
@@ -8,6 +8,7 @@ Modal.setAppElement("#root");
 const pb = new PocketBase("http://127.0.0.1:5002");
 
 const SignUp = ({ closeModal }) => {
+  const [passwordMismatch, setPasswordMismatch] = useState(false);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -18,6 +19,10 @@ const SignUp = ({ closeModal }) => {
   const [passwordIsValid, setPasswordIsValid] = useState(true);
   const [passwordConfirmIsValid, setPasswordConfirmIsValid] = useState(true);
   const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    setPasswordMismatch(password !== passwordConfirm);
+  }, [password, passwordConfirm]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +36,12 @@ const SignUp = ({ closeModal }) => {
       return;
     }
 
+    if (passwordMismatch) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    setPasswordMismatch(false);
     try {
       const data = {
         email,
@@ -45,20 +56,6 @@ const SignUp = ({ closeModal }) => {
     } catch (err) {
       setError("There was an error");
     }
-  };
-
-  const isValidEmail = (email) => {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
-  };
-
-  const isValidUsername = (username) => {
-    return /^[a-zA-Z0-9]+$/.test(username);
-  };
-
-  const isValidPassword = (password) => {
-    const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    return passwordPattern.test(password);
   };
 
   // Rest of the component
@@ -148,6 +145,7 @@ const SignUp = ({ closeModal }) => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              value={password}
             />
             {!passwordIsValid && (
               <p className="red-text-alert">Invalid password.</p>
