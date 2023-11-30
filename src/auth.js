@@ -1,18 +1,16 @@
-// auth.js
-
 import PocketBase from "pocketbase";
 
 const pb = new PocketBase("http://127.0.0.1:5002");
 
 // Save token key
-const TOKEN_KEY = 'pocketbase_token';
+const TOKEN_KEY = 'elearn_token';
 
 export const authenticate = async (email, password) => {
   try {
     const authData = await pb.collection('users').authWithPassword(email, password);
 
     // Save token as a cookie
-    document.cookie = `elearn_token=${authData.token}; path=/`;
+    document.cookie = `${TOKEN_KEY}=${authData.token}; path=/`;
 
     console.log(`Successfully logged in as ${email}`);
     return authData;
@@ -24,7 +22,7 @@ export const authenticate = async (email, password) => {
 export const logout = () => {
   // Clear token
   localStorage.removeItem(TOKEN_KEY);
-
+  document.cookie = `${TOKEN_KEY}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   // Clear auth data
   pb.authStore.clear();
 };

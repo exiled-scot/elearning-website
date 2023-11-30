@@ -16,6 +16,7 @@ import PersonalisedPaths from "./pages/PersonalisedPaths";
 import Projects from "./pages/Projects";
 import SkillPaths from "./pages/SkillPaths";
 import Assessments from "./pages/Assessments";
+import Logout from "./components/Logout";
 
 const App = () => {
   const [courses, setCourses] = useState([]);
@@ -78,6 +79,7 @@ const App = () => {
           <Route path="/projects" element={<Projects />} />
           <Route path="/skillpaths" element={<SkillPaths />} />
           <Route path="/assessments" element={<Assessments />} />
+          <Route path="/logout" element={<Logout />} />
 
           {/* Add dynamic routes for each category */}
           {categories.map((category) => (
