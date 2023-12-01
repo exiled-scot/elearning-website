@@ -5,17 +5,19 @@ import { authenticate, isAuthenticated, getToken, getUserId } from "../auth.js";
 
 Modal.setAppElement("#root");
 
-const Login = ({ closeModal }) => {
+const Login = ({ closeModal, onSuccess }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailIsValid, setEmailIsValid] = useState(true); // Define emailIsValid state
-  const [passwordIsValid, setPasswordIsValid] = useState(true); // Define passwordIsValid state
+  const [emailIsValid, setEmailIsValid] = useState(true);
+  const [passwordIsValid, setPasswordIsValid] = useState(true);
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const authData = await authenticate(email, password);
+      onSuccess(); // Call onSuccess after successful login
+      closeModal();
     } catch (err) {
       setError("Invalid credentials");
     }

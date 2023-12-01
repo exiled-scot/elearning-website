@@ -38,6 +38,10 @@ const Header = () => {
     setIsLoginOpen(true);
   };
 
+  const handleSuccessfulLogin = () => {
+    setIsLoggedIn(true);
+  };
+
   return (
     <div className="container">
       <header className="header">
@@ -51,13 +55,13 @@ const Header = () => {
             <>
               <button
                 onClick={openLoginModal}
-                className={`button-28 ${isLoginOpen ? "button-active" : ""}`}
+                className={`button-28 ${isLoginOpen ? "button-active" : ""} ${isLoggedIn ? "button-inactive" : ""}`}
               >
                 Log in
               </button>
               <button
                 onClick={openSignUpModal}
-                className={`button-28 ${isSignUpOpen ? "button-active" : ""}`}
+                className={`button-28 ${isSignUpOpen ? "button-active" : ""}s ${isLoggedIn ? "button-inactive" : ""}`}
               >
                 Sign Up
               </button>
@@ -66,7 +70,7 @@ const Header = () => {
         </div>
       </header>
       {isSignUpOpen && <SignUp closeModal={closeSignUpModal} />}
-      {isLoginOpen && <Login closeModal={closeLoginModal} />}
+      {isLoginOpen && <Login closeModal={closeLoginModal} onSuccess={handleSuccessfulLogin} />}
     </div>
   );
 };
