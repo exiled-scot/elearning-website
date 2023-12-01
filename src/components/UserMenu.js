@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { RxAvatar } from "react-icons/rx";
 
 const UserMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,15 +19,9 @@ const UserMenu = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <button
-        className="button-28"
-        style={{
-          borderRadius: '50%',
-          backgroundColor: 'black',
-          width: '28px',
-          height: '28px',
-        }}
-      ></button>
+      <button>
+        <RxAvatar size={50} />
+      </button>
       {isMenuOpen && (
         <ul className="user-menu-options">
           <li>
