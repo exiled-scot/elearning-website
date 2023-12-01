@@ -69,7 +69,7 @@ const Header = () => {
           )}
         </div>
       </header>
-      {isSignUpOpen && <SignUp closeModal={closeSignUpModal} />}
+      {isSignUpOpen && <SignUp closeModal={closeSignUpModal} onSuccess={handleSuccessfulLogin} />}
       {isLoginOpen && <Login closeModal={closeLoginModal} onSuccess={handleSuccessfulLogin} />}
     </div>
   );

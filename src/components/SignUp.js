@@ -7,7 +7,7 @@ Modal.setAppElement("#root");
 
 const pb = new PocketBase("http://127.0.0.1:5002");
 
-const SignUp = ({ closeModal }) => {
+const SignUp = ({ closeModal, onSuccess }) => {
   const [passwordMismatch, setPasswordMismatch] = useState(false);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -52,6 +52,7 @@ const SignUp = ({ closeModal }) => {
       };
 
       await pb.collection("users").create(data);
+      onSuccess();
       closeModal();
     } catch (err) {
       setError("There was an error");
