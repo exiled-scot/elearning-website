@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import PocketBase from "pocketbase";
-import { authenticate, isAuthenticated, getToken, getUserId } from "../auth.js";
+import { authenticate, isAuthenticated, getToken, getUserId } from "../utils/auth.js";
 
 Modal.setAppElement("#root");
 
