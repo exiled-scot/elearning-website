@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import SignUp from "./SignUp";
 import Login from "./Login";
 import UserMenu from "./UserMenu";
+import { RxAvatar } from "react-icons/rx";
 
 const Header = () => {
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
@@ -50,18 +51,25 @@ const Header = () => {
         </Link>
         <div className="header-buttons">
           {isLoggedIn ? (
-            <UserMenu />
+            <div className="avatar-container">
+              <RxAvatar size={50} />
+              <UserMenu />
+            </div>
           ) : (
             <>
               <button
                 onClick={openLoginModal}
-                className={`button-28 ${isLoginOpen ? "button-active" : ""} ${isLoggedIn ? "button-inactive" : ""}`}
+                className={`button-28 ${isLoginOpen ? "button-active" : ""} ${
+                  isLoggedIn ? "button-inactive" : ""
+                }`}
               >
                 Log in
               </button>
               <button
                 onClick={openSignUpModal}
-                className={`button-28 ${isSignUpOpen ? "button-active" : ""}s ${isLoggedIn ? "button-inactive" : ""}`}
+                className={`button-28 ${isSignUpOpen ? "button-active" : ""}s ${
+                  isLoggedIn ? "button-inactive" : ""
+                }`}
               >
                 Sign Up
               </button>
@@ -69,8 +77,15 @@ const Header = () => {
           )}
         </div>
       </header>
-      {isSignUpOpen && <SignUp closeModal={closeSignUpModal} onSuccess={handleSuccessfulLogin} />}
-      {isLoginOpen && <Login closeModal={closeLoginModal} onSuccess={handleSuccessfulLogin} />}
+      {isSignUpOpen && (
+        <SignUp
+          closeModal={closeSignUpModal}
+          onSuccess={handleSuccessfulLogin}
+        />
+      )}
+      {isLoginOpen && (
+        <Login closeModal={closeLoginModal} onSuccess={handleSuccessfulLogin} />
+      )}
     </div>
   );
 };
