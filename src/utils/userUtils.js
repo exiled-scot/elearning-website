@@ -1,3 +1,17 @@
+export function getCookie( cookie_name ) {
+  const cookieString = document.cookie;
+  const cookies = cookieString.split('; ').reduce((res, c) => {
+    const [name, val] = c.split('=');
+    res[name] = val;
+    return res;
+  }, {});
+  const token = cookies['elearn_token'];
+  if (!token) {
+    return null;
+  }
+  return token;
+}
+
 export function getUserIdFromCookie() {
   const cookieString = document.cookie;
   const cookies = cookieString.split('; ').reduce((res, c) => {
