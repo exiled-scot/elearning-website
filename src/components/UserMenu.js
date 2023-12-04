@@ -1,12 +1,15 @@
 import React from "react";
+import User from "../api/models/User";
+import { BASE_URL } from "../api/api";
 
-const UserMenu = ({ isOpen, username }) => {
+const UserMenu = ({ isOpen, user }) => {
+  const username = "Scott";
   return (
     <div>
       <div className={`user-menu ${isOpen ? "user-menu-active" : ""}`}>
         <ul>
           <li>
-            <span>{username}</span>
+            <span>Hello, {user}</span>
           </li>
 
           <li>

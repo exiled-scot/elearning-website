@@ -5,6 +5,8 @@ import SignUp from "./SignUp";
 import Login from "./Login";
 import UserMenu from "./UserMenu";
 import { RxAvatar } from "react-icons/rx";
+import { isAuthenticated, getUserId } from "../utils/auth";
+import { User } from "../api/models/User";
 
 const Header = () => {
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
@@ -42,6 +44,12 @@ const Header = () => {
   const handleSuccessfulLogin = () => {
     setIsLoggedIn(true);
   };
+
+  const userId = getUserId();
+  const user = new User();
+  console.log(userId);
+  user.populateDataFromAPI(userId);
+  console.log(user.name);
 
   return (
     <div className="container">
