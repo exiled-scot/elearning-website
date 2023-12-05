@@ -40,8 +40,8 @@ const NavMenu = () => {
             position: "fixed",
             top: "50%",
             left: "0%",
-            width: "12vw",
-            height: "12vh",
+            width: "5vw",
+            height: "10vh",
           }}
         />
       ) : (

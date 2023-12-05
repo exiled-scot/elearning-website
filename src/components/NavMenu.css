@@ -38,8 +38,6 @@
   text-overflow: ellipsis; /* show ellipsis (...) for overflow */
 }
 
-
-
 .nav-link:hover {
   background-color: black;
   box-shadow: none; /* remove shadow from all links */
