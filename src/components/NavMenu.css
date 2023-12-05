@@ -1,13 +1,13 @@
 .navbar {
   position: fixed;
   left: 0;
-  top: 80px; /* Adjust value based on height of Header */
+  top: 0;
   width: 8vh;
   height: calc(100vh - 240px); /* Adjusted to leave space for the footer */
   background-color: #fff;
   border-right: 1px solid #ccc;
   z-index: 1;
-  margin-top: 90px; /* Add margin to create gap between NavMenu and Header */
+  margin-top: 90px; /* Remove margin to remove gap between NavMenu and Header */
 }
 
 .navbar-nav {
@@ -21,6 +21,11 @@
 }
 
 .nav-link {
+  font-size: 1.5rem;
+  text-align: center;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,13 +38,7 @@
   text-overflow: ellipsis; /* show ellipsis (...) for overflow */
 }
 
-.nav-text {
-  font-size: 12px;
-  text-align: center;
-  white-space: normal;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+
 
 .nav-link:hover {
   background-color: black;
@@ -88,6 +87,7 @@
 }
 
 .nav-link {
+  word-wrap: break-word;
   display: flex;
   flex-direction: column;
   align-items: center;
