@@ -1,5 +1,5 @@
 .main-content {
   min-height: calc(100vh - 80px);
   padding-top: 80px; /* Add padding-top equal to the height of the navbar */
-  margin: -6vh 0 0 6vh;
+  margin: -50px 0 0 6vh;
 }

@@ -47,9 +47,7 @@ const Header = () => {
 
   const userId = getUserId();
   const user = new User();
-  console.log(userId);
   user.populateDataFromAPI(userId);
-  console.log(user.name);
 
   return (
     <div className="container">
@@ -61,7 +59,7 @@ const Header = () => {
           {isLoggedIn ? (
             <div className="avatar-container">
               <RxAvatar size={50} />
-              <UserMenu />
+              <UserMenu isOpen={true} user={user} />
             </div>
           ) : (
             <>

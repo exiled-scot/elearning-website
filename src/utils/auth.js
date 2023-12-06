@@ -12,7 +12,6 @@ export const authenticate = async (email, password) => {
     // Save token as a cookie
     document.cookie = `${TOKEN_KEY}=${authData.token}; path=/`;
 
-    console.log(`Successfully logged in as ${email}`);
     return authData;
   } catch (error) {
     throw new Error("Authentication failed");

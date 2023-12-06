@@ -8,7 +8,6 @@ const Categories = ({ categories }) => {
   useEffect(() => {
     const fetchData = async () => {
       const coursesData = await getRecordsByCategory("courses", { categories });
-      console.log(coursesData); // Add this line to log the coursesData
       setCourses(coursesData);
     };
 
