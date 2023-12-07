@@ -1,5 +1,6 @@
 import { BASE_URL } from '../api';
 import PocketBase from 'pocketbase';
+import { getUserId } from '../../utils/auth';
 
 const pb = new PocketBase(BASE_URL);
 
@@ -13,7 +14,7 @@ export class User {
 
   // Getter and setter methods here
 
-  static async retrieveDataFromAPI(RECORD_ID) { /* Modified method to be static */
+  static async retrieveDataFromAPI(RECORD_ID) {
     try {
       const record = await pb.collection('users').getOne(RECORD_ID, {
         expand: 'id,username,email,name,avatar,created,updated',
@@ -26,5 +27,21 @@ export class User {
     }
   }
 }
+
+export const getUserRecord = async () => {
+  const userId = getUserId();
+
+  try {
+    const record = await pb.collection('users').getOne(userId, {
+      expand: 'id,username,email,name,avatar,created,updated',
+    });
+
+    // Create new User object and return it
+    return new User(record.id, record.username, record.email, record.name);
+  } catch (error) {
+    console.error('Error retrieving user record:', error);
+    // Handle the error accordingly
+  }
+};
 
 export default User;

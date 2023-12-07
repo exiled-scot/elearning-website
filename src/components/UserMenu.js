@@ -1,8 +1,14 @@
 import React from "react";
 import User from "../api/models/User";
 import { BASE_URL } from "../api/api";
+import { getUserId } from "../utils/auth"; // Added import for getUserId function
 
-const UserMenu = ({ isOpen, user }) => {
+const UserMenu = ({ isOpen }) => {
+
+  const user = new User(
+    "id","username","email","name"
+  );
+
   const name = user ? user.name : "";
   const id = user ? user.id : "";
 
@@ -15,7 +21,7 @@ const UserMenu = ({ isOpen, user }) => {
           </li>
 
           <li>
-            <a href={`/account/${id}`}>Account Settings</a>
+            <a href={`/accounts/${id}`}>Account Settings</a>
           </li>
 
           <li>
@@ -28,3 +34,4 @@ const UserMenu = ({ isOpen, user }) => {
 };
 
 export default UserMenu;
+

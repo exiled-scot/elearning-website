@@ -82,7 +82,7 @@ const ProductPage = ({ course }) => {
         <h2>{description.match(/^.+?[.!?](\s|$)/)[0]}</h2>
       </div>
       <div>
-        Created by <a href={`/users/${slugify(instructor)}`} style={{ textDecoration: 'underline', color: 'blue' }}>{instructor}</a>
+        Created by <a href={`/instructors/${slugify(instructor)}`} style={{ textDecoration: 'underline', color: 'blue' }}>{instructor}</a>
       </div>
       <CourseContent content={content} className="course-requirements" />
       <ReadMore>{description}</ReadMore>

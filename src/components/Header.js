@@ -12,21 +12,9 @@ const Header = () => {
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
 
   useEffect(() => {
     checkIsLoggedIn();
-  }, []);
-
-  useEffect(() => { /* Fetch user data when user is authenticated */
-    if (isAuthenticated()) {
-      const userId = getUserId();
-      const fetchUser = async () => {
-        const userData = await User.retrieveDataFromAPI(userId);
-        setUser(userData);
-      };
-      fetchUser();
-    }
   }, []);
 
   const checkIsLoggedIn = () => {
@@ -67,7 +55,7 @@ const Header = () => {
           {isLoggedIn ? (
             <div className="avatar-container">
               <RxAvatar size={50} />
-              <UserMenu isOpen={true} user={user} />
+              <UserMenu isOpen={true} />
             </div>
           ) : (
             <>
