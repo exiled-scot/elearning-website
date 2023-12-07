@@ -18,6 +18,7 @@ const Login = ({ closeModal, onSuccess }) => {
       const authData = await authenticate(email, password);
       onSuccess(); // Call onSuccess after successful login
       closeModal();
+      window.location.reload();
     } catch (err) {
       setError("Invalid credentials");
     }
