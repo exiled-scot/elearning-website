@@ -13,21 +13,18 @@ export class User {
 
   // Getter and setter methods here
 
-  async populateDataFromAPI(RECORD_ID) {
-  try {
-    const record = await pb.collection('users').getOne(RECORD_ID, {
-      expand: 'id,username,email,name,avatar,created,updated',
-    });
+  static async retrieveDataFromAPI(RECORD_ID) { /* Modified method to be static */
+    try {
+      const record = await pb.collection('users').getOne(RECORD_ID, {
+        expand: 'id,username,email,name,avatar,created,updated',
+      });
 
-    // Assign the fetched data to the User object
-    this.id = record.id;
-    this.username = record.username;
-    this.email = record.email;
-    this.name = record.name;
-  } catch (error) {
-    console.log(error);
+      // Create new User object and return it
+      return new User(record.id, record.username, record.email, record.name);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
-}
 
-export default User
+export default User;
