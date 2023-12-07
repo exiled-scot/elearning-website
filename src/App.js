@@ -17,36 +17,57 @@ import Projects from "./pages/Projects";
 import SkillPaths from "./pages/SkillPaths";
 import Assessments from "./pages/Assessments";
 import Logout from "./components/Logout";
+import { User } from "./api/models/User";
+import ProfilePage from "./pages//ProfilePage";
 
 const App = () => {
   const [courses, setCourses] = useState([]);
+  const [users, setUsers] = useState([]);
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const coursesData = await getRecords("courses");
-      const instructorsData = await getRecords("instructors");
+      try {
+        const usersData = await getRecords("users");
+        const coursesData = await getRecords("courses");
+        const instructorsData = await getRecords("instructors");
 
-      const courses = coursesData.map((courseData) => {
-        const course = new Course(
-          courseData.categories,
-          courseData.collectionName,
-          courseData.content,
-          courseData.courseContent,
-          courseData.created,
-          courseData.description,
-          courseData.id,
-          courseData.image,
-          courseData.instructor,
-          courseData.requirements,
-          courseData.reviews,
-          courseData.title
-        );
-        return course;
-      });
+        const users = usersData.map((userData) => {
+          const user = new User(
+            userData.id,
+            userData.username,
+            userData.email,
+            userData.name
+          );
+          return user;
+        });
 
-      setCourses(courses);
-      setInstructors(instructorsData);
+        const courses = coursesData.map((courseData) => {
+          const course = new Course(
+            courseData.categories,
+            courseData.collectionName,
+            courseData.content,
+            courseData.courseContent,
+            courseData.created,
+            courseData.description,
+            courseData.id,
+            courseData.image,
+            courseData.instructor,
+            courseData.requirements,
+            courseData.reviews,
+            courseData.title
+          );
+          return course;
+        });
+
+        setCourses(courses);
+        setInstructors(instructorsData);
+        setUsers(users);
+      } catch (error) {
+        // Handle the error here
+        console.error("An error occurred:", error);
+        // You can also set an error state or display an error message to the user
+      }
     };
 
     fetchData();
@@ -81,7 +102,6 @@ const App = () => {
           <Route path="/assessments" element={<Assessments />} />
           <Route path="/logout" element={<Logout />} />
 
-          {/* Add dynamic routes for each category */}
           {categories.map((category) => (
             <Route
               key={`category-${category.slug}`}
@@ -90,7 +110,6 @@ const App = () => {
             />
           ))}
 
-          {/* Add product routes */}
           {courses.map((course) => (
             <Route
               key={course.title}
@@ -99,7 +118,14 @@ const App = () => {
             />
           ))}
 
-          {/* Add instructor routes */}
+          {users.map((user) => (
+            <Route
+              key={user.name}
+              path={`/accounts/${createSlug(user.id)}`}
+              element={<ProfilePage user={user} />}
+            />
+          ))}
+
           {instructors.map((instructor) => (
             <Route
               key={instructor.name}
