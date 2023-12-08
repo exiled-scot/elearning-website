@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import User from "../api/models/User";
 import { BASE_URL } from "../api/api";
-import { getUserId } from "../utils/auth"; // Added import for getUserId function
+import { getUserId } from "../utils/auth";
 
 const UserMenu = ({ isOpen }) => {
+  const [currentUser, setCurrentUser] = useState(null);
 
-  const user = new User(
-    "id","username","email","name"
-  );
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Assuming you have the current user's ID in state or props
+        const userId = getUserId();
 
-  const name = user ? user.name : "";
-  const id = user ? user.id : "";
+        // Retrieve the current user's data from the API
+        const user = await User.retrieveDataFromAPI(userId);
+
+        if (user) {
+          setCurrentUser(user);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const name = currentUser ? currentUser.getName() : "";
+  const id = currentUser ? currentUser.getId() : "";
 
   return (
     <div>
@@ -34,4 +51,3 @@ const UserMenu = ({ isOpen }) => {
 };
 
 export default UserMenu;
-

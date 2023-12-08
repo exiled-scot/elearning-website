@@ -24,19 +24,15 @@ const App = () => {
   const [courses, setCourses] = useState([]);
   const [users, setUsers] = useState([]);
   const [instructors, setInstructors] = useState([]);
-  const [usersData, setUsersData] = useState([]); // Add state for usersData
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const usersData = await getRecords("users");
-        setUsersData(usersData); // Set the usersData state
-
         const coursesData = await getRecords("courses");
         const instructorsData = await getRecords("instructors");
 
         const users = usersData.map((userData) => {
-          console.log("Fetching data... ", users.name);
           const user = new User(
             userData.id,
             userData.username,
@@ -122,18 +118,18 @@ const App = () => {
             />
           ))}
 
-          {usersData.map((userData) => (
+          {users.map((user) => (
             <Route
-              key={userData.name}
-              path={`/accounts/${createSlug(userData.id)}`}
-              element={<ProfilePage user={userData} />}
+              key={user.name}
+              path={`/accounts/${createSlug(user.id)}`}
+              element={<ProfilePage user={user} />}
             />
           ))}
 
           {instructors.map((instructor) => (
             <Route
               key={instructor.name}
-              path={`/instructors/${createSlug(instructor.name)}`}
+              path={`/users/${createSlug(instructor.name)}`}
               element={<InstructorPage instructor={instructor} />}
             />
           ))}
