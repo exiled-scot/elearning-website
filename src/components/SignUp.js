@@ -10,12 +10,12 @@ const pb = new PocketBase("http://127.0.0.1:5002");
 const SignUp = ({ closeModal, onSuccess }) => {
   const [passwordMismatch, setPasswordMismatch] = useState(false);
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [error, setError] = useState("");
   const [emailIsValid, setEmailIsValid] = useState(true);
-  const [usernameIsValid, setUsernameIsValid] = useState(true);
+  const [NameIsValid, setNameIsValid] = useState(true);
   const [passwordIsValid, setPasswordIsValid] = useState(true);
   const [passwordConfirmIsValid, setPasswordConfirmIsValid] = useState(true);
   const [isActive, setIsActive] = useState(false);
@@ -29,7 +29,7 @@ const SignUp = ({ closeModal, onSuccess }) => {
 
     if (
       !emailIsValid ||
-      !usernameIsValid ||
+      !NameIsValid ||
       !passwordIsValid ||
       !passwordConfirmIsValid
     ) {
@@ -45,7 +45,7 @@ const SignUp = ({ closeModal, onSuccess }) => {
     try {
       const data = {
         email,
-        username,
+        name,
         emailVisibility: true,
         password,
         passwordConfirm,
@@ -117,7 +117,7 @@ const SignUp = ({ closeModal, onSuccess }) => {
             className="label"
             style={{ textAlign: "left", marginRight: "10px" }}
           >
-            Username:
+            Name:
           </label>
           <div
             className={`input-container ${isActive ? "is-active" : ""}`}
@@ -125,11 +125,11 @@ const SignUp = ({ closeModal, onSuccess }) => {
           >
             <input
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
-            {!usernameIsValid && (
-              <p className="red-text-alert">Invalid username.</p>
+            {!NameIsValid && (
+              <p className="red-text-alert">Invalid name.</p>
             )}
           </div>
           <label
