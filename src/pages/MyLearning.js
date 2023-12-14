@@ -1,20 +1,36 @@
-import React from "react";
-import { isAuthenticated } from "../utils/auth";
+import React, { useEffect, useState } from "react";
+import { isAuthenticated, getUserId } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import User from "../api/models/User";
 
-const MyLearning = (user) => {
+const MyLearning = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
   const isLoggedIn = isAuthenticated();
+
   useEffect(() => {
-    if (!isAuthenticated()) {
+    if (!isLoggedIn) {
       navigate("/");
+    } else {
+      const fetchData = async () => {
+        try {
+          const userId = getUserId(); // Implement getUserId to obtain the current user's ID
+          const userData = await User.retrieveDataFromAPI(userId);
+          if (userData) {
+            setUser(userData);
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      fetchData();
     }
-  }, []);
+  }, [isLoggedIn, navigate]);
 
   return (
     <div>
-      <h2>Welcome, {isLoggedIn ? user.name : "Guest"}!</h2>
+      <h2>Welcome, {user ? user.name : "Guest"}!</h2>
       <div className="mylearning-submenu-container">
         <h3>Home</h3>
         <h3>In-progress</h3>
