@@ -10,42 +10,36 @@ const MyLearning = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(true);
 
   useEffect(() => {
-    // Check if user is authenticated and fetch data
-    const fetchData = async () => {
-      try {
-        const userId = getUserId(); // Assume getUserId is implemented
+    const checkAndFetchUser = async () => {
+      const authStatus = await isAuthenticated();
+      if (authStatus) {
+        const userId = getUserId();
         const userData = await User.retrieveDataFromAPI(userId);
-        if (userData) {
-          setUser(userData);
-        }
-      } catch (error) {
-        console.error(error);
+        setUser(userData);
       }
     };
 
-    if (isAuthenticated()) {
-      fetchData();
-    }
+    checkAndFetchUser();
   }, [navigate]);
 
   useEffect(() => {
-    // Redirect to home if modal is closed and not logged in
     if (!isLoginOpen && !isAuthenticated()) {
       navigate("/");
     }
   }, [isLoginOpen, navigate]);
 
   const handleLoginModalClose = () => setIsLoginOpen(false);
+
   const handleSuccessfulLogin = () => {
-    setIsLoginOpen(false); // Close login modal on successful login
-    window.location.reload();
+    setIsLoginOpen(false);
+    navigate("/mylearning", { replace: true });
   };
 
   return (
     <div>
-      <h2>Welcome, {user ? user.name : "Guest"}!</h2>
-      {isAuthenticated() ? (
+      {user ? (
         <>
+          <h1>{user.name}</h1>
           <div className="mylearning-submenu-container">
             <h3>Home</h3>
             <h3>In-progress</h3>
@@ -68,12 +62,14 @@ const MyLearning = () => {
             <h3>Latest Additions</h3>
           </div>
         </>
-      ) : (
+      ) : isAuthenticated() ? (
+        <div>Loading...</div>
+      ) : isLoginOpen ? (
         <Login
           closeModal={handleLoginModalClose}
           onSuccess={handleSuccessfulLogin}
         />
-      )}
+      ) : null}
     </div>
   );
 };
