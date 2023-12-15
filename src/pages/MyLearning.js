@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { isAuthenticated, getUserId } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import User from "../api/models/User";
-import Login from "../components/Login"; // Check if the path is correct
+import Login from "../components/Login";
 
 const MyLearning = () => {
   const navigate = useNavigate();
@@ -10,16 +10,28 @@ const MyLearning = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(true);
 
   useEffect(() => {
+    let timeoutId;
+
     const checkAndFetchUser = async () => {
-      const authStatus = await isAuthenticated();
-      if (authStatus) {
+      const authenticationStatus = await isAuthenticated();
+      if (authenticationStatus) {
         const userId = getUserId();
         const userData = await User.retrieveDataFromAPI(userId);
         setUser(userData);
+      } else {
+        timeoutId = setTimeout(() => {
+          window.location.reload(false);
+        }, 10000);
       }
     };
 
     checkAndFetchUser();
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
   }, [navigate]);
 
   useEffect(() => {
