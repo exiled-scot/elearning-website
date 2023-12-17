@@ -11,13 +11,9 @@ const ContinueLearning = () => {
       <div className="mylearning-carousel">
         <h3>Continue Learning</h3>
       </div>
-      <button className="centered-button button-28">
+      <button className="centered-button button-29">
         Browse all popular courses
       </button>
-      <div
-        className="line-spanning-carousel"
-        style={{ paddingBottom: "50px" }}
-      ></div>
     </div>
   );
 };
@@ -35,20 +31,12 @@ const RecommendedForYou = () => {
 const PopularSkillPaths = () => {
   return (
     <div>
-      <div
-        className="line-spanning-carousel"
-        style={{ paddingBottom: "50px" }}
-      ></div>
       <div className="mylearning-carousel">
         <h3>Popular Skill Paths</h3>
       </div>
-      <button className="centered-button button-28">
+      <button className="centered-button button-29">
         Browse all skill paths
       </button>
-      <div
-        className="line-spanning-carousel"
-        style={{ paddingBottom: "50px" }}
-      ></div>
     </div>
   );
 };
@@ -59,13 +47,9 @@ const PopularCoursesForYou = () => {
       <div className="mylearning-carousel">
         <h3>Popular Courses for You</h3>
       </div>
-      <button className="centered-button button-28">
+      <button className="centered-button button-29">
         Browse all popular courses
       </button>
-      <div
-        className="line-spanning-carousel"
-        style={{ paddingBottom: "50px" }}
-      ></div>
     </div>
   );
 };
@@ -76,11 +60,7 @@ const LatestAdditions = () => {
       <div className="mylearning-carousel">
         <h3>Latest Additions</h3>
       </div>
-      <button className="centered-button button-28">Browse all new</button>
-      <div
-        className="line-spanning-carousel"
-        style={{ paddingBottom: "50px" }}
-      ></div>
+      <button className="centered-button button-29">Browse all new</button>
     </div>
   );
 };
@@ -91,10 +71,6 @@ const SavedContent = () => {
       <div className="mylearning-carousel">
         <h3>Saved Contents</h3>
       </div>
-      <div
-        className="line-spanning-carousel"
-        style={{ paddingBottom: "50px" }}
-      ></div>
     </div>
   );
 };
@@ -105,10 +81,6 @@ const CompletedContent = () => {
       <div className="mylearning-carousel">
         <h3>Completed Contents</h3>
       </div>
-      <div
-        className="line-spanning-carousel"
-        style={{ paddingBottom: "50px" }}
-      ></div>
     </div>
   );
 };
