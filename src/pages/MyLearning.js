@@ -140,25 +140,25 @@ const MyLearning = () => {
           <h1 className="welcome">Welcome, {user.name}!</h1>
           <div className="mylearning-submenu-container">
             <h3
-              className={activeTab === "Home" ? "active" : ""}
+              className={activeTab === "Home" ? "active-1" : ""}
               onClick={() => handleTabClick("Home")}
             >
               Home
             </h3>
             <h3
-              className={activeTab === "In Progress" ? "active" : ""}
+              className={activeTab === "In Progress" ? "active-1" : ""}
               onClick={() => handleTabClick("In Progress")}
             >
               In Progress
             </h3>
             <h3
-              className={activeTab === "Saved" ? "active" : ""}
+              className={activeTab === "Saved" ? "active-1" : ""}
               onClick={() => handleTabClick("Saved")}
             >
               Saved
             </h3>
             <h3
-              className={activeTab === "Completed" ? "active" : ""}
+              className={activeTab === "Completed" ? "active-1" : ""}
               onClick={() => handleTabClick("Completed")}
             >
               Completed

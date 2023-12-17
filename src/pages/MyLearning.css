@@ -5,20 +5,35 @@
 .mylearning-submenu-container {
   display: flex;
   justify-content: center;
-  gap: 15px; /* Adjust the space between items as needed */
-  border-bottom: 1px solid #000; /* Replace with desired color or style */
+  gap: 0px;
+  border-bottom: 1px solid #000;
   width: 100%;
-  overflow-x: auto; /* In case of overflow */
+  overflow-x: auto;
   box-sizing: border-box;
-  margin-bottom: 20px; /* Optional spacing below the line */
 }
 
 .mylearning-submenu-container h3 {
   cursor: pointer;
+  padding: 20px 50px;
+  margin-bottom: 0px;
 }
 
-.mylearning-submenu-container h3.active {
-  color: #1a1a1a;
+.mylearning-submenu-container h3:hover {
+  background-color: black;
+  color: white;
+}
+
+.mylearning-submenu-container h3:active {
+  background-color: black;
+  color: white;
+}
+
+.active-1 {
+  border-bottom: 10px solid black;
+}
+
+.mylearning-submenu-container .mylearning-submenu-container-item {
+  margin-bottom: -1px;
 }
 
 .centered-button {
