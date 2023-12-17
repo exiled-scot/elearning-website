@@ -103,7 +103,7 @@ const MyLearning = () => {
       } else {
         timeoutId = setTimeout(() => {
           window.location.reload(false);
-        }, 10000);
+        }, 5000); // Modified: Reduced timeout to 5000ms
       }
     };
 
