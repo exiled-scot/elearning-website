@@ -143,7 +143,7 @@ const SignUp = ({ closeModal, onSuccess }) => {
           },
           content: {
             width: "40%",
-            height: "40%",
+            height: "45%",
             position: "relative",
             zIndex: 1001,
             borderRadius: "20px",
@@ -176,6 +176,7 @@ const SignUp = ({ closeModal, onSuccess }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+
             {!emailIsValid && (
               <p className="red-text-alert">Invalid email address.</p>
             )}
@@ -237,23 +238,12 @@ const SignUp = ({ closeModal, onSuccess }) => {
             )}
           </div>
           {error && <p className="red-text-alert">{error}</p>}
+          <div style={{ gridColumn: "1 / span 2", textAlign: "center" }}>
+            <button type="submit" className="button-28">
+              Register
+            </button>
+          </div>
           <SocialSignUpComponent />
-          <button
-            type="submit"
-            className="button-28"
-            style={{
-              justifySelf: "center",
-              marginTop: "20px",
-              width: "150px",
-              height: "50px",
-              position: "absolute",
-              bottom: 20,
-              left: "50%",
-              transform: "translateX(-50%)",
-            }}
-          >
-            Register
-          </button>
         </form>
       </Modal>
     </div>
