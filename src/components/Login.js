@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import PocketBase from "pocketbase";
 import { authenticate, isAuthenticated, getToken, getUserId } from "../utils/auth.js";
+import SocialSignUpComponent from "./SocialSignUpComponent";
 
 Modal.setAppElement("#root");
 
@@ -38,8 +39,8 @@ const Login = ({ closeModal, onSuccess }) => {
             zIndex: 1000,
           },
           content: {
-            width: "40%", // Modified as per the request
-            height: "40%", // Modified as per the request
+            width: "40%",
+            height: "45%", // Modified as per the request
             position: "relative",
             zIndex: 1001,
             borderRadius: "20px", // Set the corner radius value here
@@ -49,12 +50,12 @@ const Login = ({ closeModal, onSuccess }) => {
         <form
           onSubmit={handleSubmit}
           style={{
-            padding: "40px",
-            margin: "40px",
+            padding: "10px",
+            margin: "30px",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
             columnGap: "10px",
-            rowGap: "20px",
+            rowGap: "1.5rem",
           }}
         >
           <label
@@ -97,25 +98,13 @@ const Login = ({ closeModal, onSuccess }) => {
               <p className="red-text-alert">Invalid password.</p>
             )}
           </div>
-          <div>
-            <button
-              type="submit"
-              className="button-28"
-              style={{
-                justifySelf: "center",
-                marginTop: "20px",
-                width: "150px",
-                height: "50px",
-                position: "absolute",
-                bottom: 20,
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}
-            >
-              Log in
-            </button>
-            {error && <div style={{ color: "red" }}>{error}</div>}
+            <div style={{ gridColumn: "1 / span 2", textAlign: "center" }}>
+              <button type="submit" className="button-28">
+              Register
+              </button>
           </div>
+            {error && <div style={{ color: "red" }}>{error}</div>}
+          <SocialSignUpComponent />
         </form>
       </Modal>
     </div>
