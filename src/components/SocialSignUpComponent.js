@@ -5,7 +5,7 @@ const SocialSignUpComponent = () => {
     <>
       <div
         className="center-text line-container"
-        style={{ gridColumn: "1 / span 2", textAlign: "center" }}
+        style={{ gridColumn: "1 / span 2", textAlign: "center", overflow: "hidden" }}
       >
         Or continue with
       </div>
@@ -16,6 +16,7 @@ const SocialSignUpComponent = () => {
           gridTemplateColumns: "repeat(4, 1fr)",
           gridColumnGap: "10px",
           alignItems: "center",
+          overflow: "hidden",
         }}
       >
         <div className="icon-container">
@@ -60,6 +61,7 @@ const SocialSignUpComponent = () => {
           gridColumn: "1 / span 2",
           textAlign: "center",
           marginTop: "5px",
+          overflow: "hidden",
         }}
       >
         By continuing, you confirm that you are an adult. By creating an
