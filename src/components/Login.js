@@ -42,7 +42,7 @@ const Login = ({ closeModal, onSuccess }) => {
             justifyContent: "center",
             alignItems: "center",
             zIndex: 1000,
-            overflowY: 'auto',
+            overflowX: 'auto',
           },
           content: {
             width: "40%",

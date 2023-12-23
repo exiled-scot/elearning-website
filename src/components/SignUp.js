@@ -72,6 +72,7 @@ const SignUp = ({ closeModal, onSuccess }) => {
             justifyContent: "center",
             alignItems: "center",
             zIndex: 1000,
+            overflowX: "auto",
           },
           content: {
             width: "40%",
@@ -108,6 +109,7 @@ const SignUp = ({ closeModal, onSuccess }) => {
             style={{ gridColumn: "2", margin: "5px 0" }}
           >
             <input
+              style={{ width: "100%" }}
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -128,6 +130,7 @@ const SignUp = ({ closeModal, onSuccess }) => {
             style={{ display: "flex", alignItems: "center" }}
           >
             <input
+              style={{ width: "100%" }}
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -145,6 +148,7 @@ const SignUp = ({ closeModal, onSuccess }) => {
             style={{ display: "flex", alignItems: "center" }}
           >
             <input
+              style={{ width: "100%" }}
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -165,6 +169,7 @@ const SignUp = ({ closeModal, onSuccess }) => {
             style={{ display: "flex", alignItems: "center" }}
           >
             <input
+              style={{ width: "100%" }}
               type="password"
               value={passwordConfirm}
               onChange={(e) => setPasswordConfirm(e.target.value)}
