@@ -75,10 +75,14 @@ const SignUp = ({ closeModal, onSuccess }) => {
           },
           content: {
             width: "40%",
-            height: "45%",
+            minHeight: "45%", // Set a minimum height
+            maxHeight: "80%", // Set a maximum height to allow for content growth
             position: "relative",
             zIndex: 1001,
-            borderRadius: "20px",
+            borderRadius: "20px", // Set the corner radius value here
+            display: "flex",
+            flexDirection: "column", // Ensure internal structure allows the footer to stay at the bottom
+            justifyContent: "space-between", // Distribute space evenly
           },
         }}
       >
@@ -170,12 +174,16 @@ const SignUp = ({ closeModal, onSuccess }) => {
             )}
           </div>
           {error && <p className="red-text-alert">{error}</p>}
-          <div style={{ gridColumn: "1 / span 2", textAlign: "center" }}>
-            <button type="submit" className="button-28">
-              Register
-            </button>
+          <div className="bottom-div">
+            <div style={{ gridColumn: "1 / span 2", textAlign: "center" }}>
+              <div style={{ padding: "20px" }}>
+                <button type="submit" className="button-28">
+                  Register
+                </button>
+              </div>
+            </div>
+            <SocialSignUpComponent />
           </div>
-          <SocialSignUpComponent />
         </form>
       </Modal>
     </div>

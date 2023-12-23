@@ -107,11 +107,13 @@ const Login = ({ closeModal, onSuccess }) => {
               <p className="red-text-alert">Invalid password.</p>
             )}
           </div>
-          <div style={{ gridColumn: "1 / span 2", textAlign: "center" }}>
-            <button type="submit" className="button-28">
-              Register
-            </button>
-            <div className="bottom-div">
+          <div className="bottom-div">
+            <div style={{ gridColumn: "1 / span 2", textAlign: "center" }}>
+              <div style={{ padding: "20px" }}>
+              <button type="submit" className="button-28">
+                Log In
+              </button>
+              </div>
               <SocialSignUpComponent />
             </div>
           </div>
