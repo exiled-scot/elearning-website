@@ -75,6 +75,7 @@ const SignUp = ({ closeModal, onSuccess }) => {
             overflowX: "auto",
           },
           content: {
+            maxWidth: "600px",
             width: "40%",
             minHeight: "45%", // Set a minimum height
             maxHeight: "80%", // Set a maximum height to allow for content growth
@@ -106,7 +107,7 @@ const SignUp = ({ closeModal, onSuccess }) => {
           </label>
           <div
             className={`input-container ${isActive ? "is-active" : ""}`}
-            style={{ gridColumn: "2", margin: "5px 0" }}
+            style={{ display: "flex", alignItems: "center" }}
           >
             <input
               style={{ width: "100%" }}

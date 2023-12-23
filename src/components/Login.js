@@ -45,6 +45,7 @@ const Login = ({ closeModal, onSuccess }) => {
             overflowX: 'auto',
           },
           content: {
+            maxWidth: "600px",
             width: "40%",
             height: "45%", // Set a minimum height
             position: "relative",
