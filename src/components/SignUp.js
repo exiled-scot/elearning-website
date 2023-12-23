@@ -173,7 +173,9 @@ const SignUp = ({ closeModal, onSuccess }) => {
               <p className="red-text-alert">Passwords do not match.</p>
             )}
           </div>
-          {error && <p className="red-text-alert">{error}</p>}
+          <div style={{ padding: "10px" }}>
+            {error && <div style={{ color: "red" }}>{error}</div>}
+          </div>
           <div className="bottom-div">
             <div style={{ gridColumn: "1 / span 2", textAlign: "center" }}>
               <div style={{ padding: "20px" }}>

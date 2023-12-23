@@ -32,3 +32,13 @@
 .icon-container:hover .icon {
   transform: scale(2);
 }
+
+.bottom-div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  grid-column: 1 / span 2;
+  text-align: center;
+}

@@ -13,22 +13,18 @@ const SocialSignUpComponent = () => {
         className="center-text"
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr 2fr 1fr)",
+          gridTemplateColumns: "repeat(4, 1fr)",
           gridColumnGap: "10px",
           alignItems: "center",
         }}
       >
-        <div className="icon-container"
-          style={{
-            padding: "15px",
-          }}
-        >
+        <div className="icon-container">
           <img
             className="icon"
             src="/assets/facebook.svg"
             onClick={() => (window.location.href = "/signup/facebook")}
             alt="Facebook"
-            style={{ width: "100%", transition: "transform 0.3s", cursor: "pointer", }}
+    style={{ width: "100%", transition: "transform 0.3s", padding: "20px"}}
           />
         </div>
         <div className="icon-container">
@@ -37,7 +33,7 @@ const SocialSignUpComponent = () => {
             src="/assets/google.svg"
             onClick={() => (window.location.href = "/signup/google")}
             alt="Google"
-            style={{ width: "100%", transition: "transform 0.3s", cursor: "pointer", }}
+            style={{ width: "100%", transition: "transform 0.3s" }}
           />
         </div>
         <div className="icon-container">
@@ -46,7 +42,7 @@ const SocialSignUpComponent = () => {
             src="/assets/x-logo.svg"
             onClick={() => (window.location.href = "/signup/x")}
             alt="X"
-            style={{ width: "100%", transition: "transform 0.3s", cursor: "pointer", }}
+            style={{ width: "100%", transition: "transform 0.3s" }}
           />
         </div>
         <div className="icon-container">
@@ -55,7 +51,7 @@ const SocialSignUpComponent = () => {
             src="/assets/apple.svg"
             onClick={() => (window.location.href = "/signup/apple")}
             alt="Apple"
-            style={{ width: "100%", transition: "transform 0.3s", cursor: "pointer", }}
+            style={{ width: "100%", transition: "transform 0.3s" }}
           />
         </div>
       </div>

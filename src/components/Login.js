@@ -42,11 +42,11 @@ const Login = ({ closeModal, onSuccess }) => {
             justifyContent: "center",
             alignItems: "center",
             zIndex: 1000,
+            overflowY: 'auto',
           },
           content: {
             width: "40%",
-            minHeight: "45%", // Set a minimum height
-            maxHeight: "80%", // Set a maximum height to allow for content growth
+            height: "45%", // Set a minimum height
             position: "relative",
             zIndex: 1001,
             borderRadius: "20px", // Set the corner radius value here
@@ -67,6 +67,7 @@ const Login = ({ closeModal, onSuccess }) => {
             rowGap: "1.5rem",
           }}
         >
+
           <label
             className="label"
             style={{ textAlign: "left", marginRight: "10px", width: "100px" }}
@@ -110,6 +111,9 @@ const Login = ({ closeModal, onSuccess }) => {
           <div className="bottom-div">
             <div style={{ gridColumn: "1 / span 2", textAlign: "center" }}>
               <div style={{ padding: "20px" }}>
+                <div style={{padding: "10px"}}>
+                  {error && <div style={{ color: "red" }}>{error}</div>}
+                </div>
               <button type="submit" className="button-28">
                 Log In
               </button>
@@ -117,7 +121,6 @@ const Login = ({ closeModal, onSuccess }) => {
               <SocialSignUpComponent />
             </div>
           </div>
-          {error && <div style={{ color: "red" }}>{error}</div>}
         </form>
       </Modal>
     </div>
