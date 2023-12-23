@@ -43,17 +43,17 @@ const Card = ({ courses }) => {
                 </Link>
               </h2>
               <p className="instructor">{course.instructor}</p>
-              <p className="description">
-                {course.description.split(".")[0].trim()}
-              </p>
+              <div className="description-container">
+                <p className="description">
+                  {course.description}
+                </p>
+                <div className="description-fade"></div>
+              </div>
             </div>
-            <ul className="menu-content">
-              <li>
-                <a href="#">
-                  <i className="fa fa-pencil"></i>Buy this course
-                </a>
-              </li>
-            </ul>
+                <button
+                  className="button-28 buy-button"
+                >Buy this course
+                </button>
           </div>
         </div>
       ))}
