@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import PocketBase from "pocketbase";
-import { authenticate, isAuthenticated, getToken, getUserId } from "../utils/auth.js";
+import {
+  authenticate,
+  isAuthenticated,
+  getToken,
+  getUserId,
+} from "../utils/auth.js";
 import SocialSignUpComponent from "./SocialSignUpComponent";
 
 Modal.setAppElement("#root");
@@ -40,10 +45,14 @@ const Login = ({ closeModal, onSuccess }) => {
           },
           content: {
             width: "40%",
-            height: "45%", // Modified as per the request
+            minHeight: "45%", // Set a minimum height
+            maxHeight: "80%", // Set a maximum height to allow for content growth
             position: "relative",
             zIndex: 1001,
             borderRadius: "20px", // Set the corner radius value here
+            display: "flex",
+            flexDirection: "column", // Ensure internal structure allows the footer to stay at the bottom
+            justifyContent: "space-between", // Distribute space evenly
           },
         }}
       >
@@ -98,13 +107,15 @@ const Login = ({ closeModal, onSuccess }) => {
               <p className="red-text-alert">Invalid password.</p>
             )}
           </div>
-            <div style={{ gridColumn: "1 / span 2", textAlign: "center" }}>
-              <button type="submit" className="button-28">
+          <div style={{ gridColumn: "1 / span 2", textAlign: "center" }}>
+            <button type="submit" className="button-28">
               Register
-              </button>
+            </button>
+            <div className="bottom-div">
+              <SocialSignUpComponent />
+            </div>
           </div>
-            {error && <div style={{ color: "red" }}>{error}</div>}
-          <SocialSignUpComponent />
+          {error && <div style={{ color: "red" }}>{error}</div>}
         </form>
       </Modal>
     </div>
