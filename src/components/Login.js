@@ -42,18 +42,18 @@ const Login = ({ closeModal, onSuccess }) => {
             justifyContent: "center",
             alignItems: "center",
             zIndex: 1000,
-            overflowX: 'auto',
+            overflowX: "auto",
           },
           content: {
             maxWidth: "600px",
-            width: "40%",
-            height: "45%", // Set a minimum height
+            width: "600px", // Set a fixed width
+            height: "600px", // Set a fixed height
             position: "relative",
             zIndex: 1001,
-            borderRadius: "20px", // Set the corner radius value here
-            display: "flex",
-            flexDirection: "column", // Ensure internal structure allows the footer to stay at the bottom
-            justifyContent: "space-between", // Distribute space evenly
+            borderRadius: "20px",
+            // Prevent resizing
+            resize: "none",
+            overflow: "auto", // Add scroll if content overflows
           },
         }}
       >
@@ -68,7 +68,6 @@ const Login = ({ closeModal, onSuccess }) => {
             rowGap: "1.5rem",
           }}
         >
-
           <label
             className="label"
             style={{ textAlign: "left", marginRight: "10px", width: "100px" }}
@@ -112,12 +111,12 @@ const Login = ({ closeModal, onSuccess }) => {
           <div className="bottom-div">
             <div style={{ gridColumn: "1 / span 2", textAlign: "center" }}>
               <div style={{ padding: "20px" }}>
-                <div style={{padding: "10px"}}>
+                <div style={{ padding: "10px" }}>
                   {error && <div style={{ color: "red" }}>{error}</div>}
                 </div>
-              <button type="submit" className="button-28">
-                Log In
-              </button>
+                <button type="submit" className="button-28">
+                  Log In
+                </button>
               </div>
               <SocialSignUpComponent />
             </div>

@@ -76,15 +76,14 @@ const SignUp = ({ closeModal, onSuccess }) => {
           },
           content: {
             maxWidth: "600px",
-            width: "40%",
-            minHeight: "45%", // Set a minimum height
-            maxHeight: "80%", // Set a maximum height to allow for content growth
+            width: "600px", // Set a fixed width
+            height: "600px", // Set a fixed height
             position: "relative",
             zIndex: 1001,
-            borderRadius: "20px", // Set the corner radius value here
-            display: "flex",
-            flexDirection: "column", // Ensure internal structure allows the footer to stay at the bottom
-            justifyContent: "space-between", // Distribute space evenly
+            borderRadius: "20px",
+            // Prevent resizing
+            resize: "none",
+            overflow: "auto", // Add scroll if content overflows
           },
         }}
       >
