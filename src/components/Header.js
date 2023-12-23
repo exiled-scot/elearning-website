@@ -69,7 +69,7 @@ const Header = () => {
               </button>
               <button
                 onClick={openSignUpModal}
-                className={`button-28 ${isSignUpOpen ? "button-active" : ""}s ${
+                className={`button-28 ${isSignUpOpen ? "button-active" : ""} ${
                   isLoggedIn ? "button-inactive" : ""
                 }`}
               >
