@@ -45,11 +45,17 @@ const Header = () => {
     setIsLoggedIn(true);
   };
 
+  function handleImageError(event) {
+    event.target.style.display = 'none'; // Hide the image
+    event.target.nextSibling.style.display = 'block'; // Show the h1
+  }
+
   return (
     <div className="container">
       <header className="header">
         <Link to="/">
-          <h1 className="header-title">eLearn</h1>
+          <img className="header-title header-image" src="/assets/elearn.svg" alt="eLearn" onError={(e) => { e.target.onerror = null; e.target.style.display='none' }} />
+          <h1 className="header-title" style={{ display: 'none' }}>eLearn</h1>
         </Link>
         <div className="header-buttons">
           {isLoggedIn ? (

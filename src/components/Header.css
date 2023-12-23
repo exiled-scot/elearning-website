@@ -33,10 +33,22 @@
   transform: translateY(-2px);
 }
 
+.header-image {
+  height: 100%;
+  top: -30%;
+}
+
 .header-title {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  font-size: 28px;
+  text-align: center;
+  margin-top: 0.8em;
+  cursor: pointer;
+  &:hover {
+    color: red;
+  }
 }
 
 .header {
@@ -48,16 +60,6 @@
   top: 0;
   left: 0;
   right: 0;
-}
-
-.header-title {
-  font-size: 28px;
-  text-align: center;
-  margin-top: 0.8em;
-  cursor: pointer;
-  &:hover {
-    color: red;
-  }
 }
 
 .container {
