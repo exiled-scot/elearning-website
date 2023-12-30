@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+  import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -24,6 +24,7 @@ const App = () => {
   const [courses, setCourses] = useState([]);
   const [users, setUsers] = useState([]);
   const [instructors, setInstructors] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,6 +64,7 @@ const App = () => {
         setCourses(courses);
         setInstructors(instructorsData);
         setUsers(users);
+        setLoading(false);
       } catch (error) {
         // Handle the error here
         console.error("An error occurred:", error);
@@ -93,7 +95,16 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/dashboard" element={<h1>Dashboard page</h1>} />
-          <Route path="/mylearning" element={<MyLearning/>} />
+          <Route
+            path="/mylearning"
+            element={
+              loading ? (
+                <p>Loading...</p>
+              ) : (
+                <MyLearning courses={courses} />
+              )
+            }
+          />
           <Route path="/explore" element={<Explore />} />
           <Route path="/cloudlabs" element={<CloudLabs />} />
           <Route path="/personalisedpaths" element={<PersonalisedPaths />} />
@@ -101,7 +112,7 @@ const App = () => {
           <Route path="/skillpaths" element={<SkillPaths />} />
           <Route path="/assessments" element={<Assessments />} />
           <Route path="/logout" element={<Logout />} />
-
+  
           {categories.map((category) => (
             <Route
               key={`category-${category.slug}`}
@@ -109,7 +120,7 @@ const App = () => {
               element={<Categories categories={category.name} />}
             />
           ))}
-
+  
           {courses.map((course) => (
             <Route
               key={course.title}
@@ -117,7 +128,7 @@ const App = () => {
               element={<ProductPage course={course} />}
             />
           ))}
-
+  
           {users.map((user) => (
             <Route
               key={user.name}
@@ -125,7 +136,7 @@ const App = () => {
               element={<ProfilePage user={user} />}
             />
           ))}
-
+  
           {instructors.map((instructor) => (
             <Route
               key={instructor.name}

@@ -3,6 +3,7 @@ import { isAuthenticated, getUserId } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import User from "../api/models/User";
 import Login from "../components/Login";
+import Card from "../components/Card";
 import "./MyLearning.css";
 
 const ContinueLearning = () => {
@@ -11,9 +12,6 @@ const ContinueLearning = () => {
       <div className="mylearning-carousel">
         <h3>Continue Learning</h3>
       </div>
-      <button className="centered-button button-29">
-        Browse all popular courses
-      </button>
     </div>
   );
 };
@@ -29,6 +27,7 @@ const RecommendedForYou = () => {
 };
 
 const PopularSkillPaths = () => {
+  
   return (
     <div>
       <div className="mylearning-carousel">
@@ -41,11 +40,23 @@ const PopularSkillPaths = () => {
   );
 };
 
-const PopularCoursesForYou = () => {
+const PopularCoursesForYou = ({ courses }) => {
+  // Sort courses based on the highest rating
+  const sortedCourses = courses
+    .sort((a, b) => {
+      const ratingA = a.reviews && Array.isArray(a.reviews) ? a.reviews.reduce((sum, review) => sum + review.rating, 0) : 0;
+      const ratingB = b.reviews && Array.isArray(b.reviews) ? b.reviews.reduce((sum, review) => sum + review.rating, 0) : 0;
+      return ratingA - ratingB;
+    })
+    .slice(0, 4);
+
   return (
     <div>
       <div className="mylearning-carousel">
         <h3>Popular Courses for You</h3>
+      </div>
+      <div>
+        <Card courses={sortedCourses} />
       </div>
       <button className="centered-button button-29">
         Browse all popular courses
@@ -53,6 +64,7 @@ const PopularCoursesForYou = () => {
     </div>
   );
 };
+
 
 const LatestAdditions = () => {
   return (
@@ -85,7 +97,7 @@ const CompletedContent = () => {
   );
 };
 
-const MyLearning = () => {
+const MyLearning = ({ courses }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isLoginOpen, setIsLoginOpen] = useState(true);
@@ -170,7 +182,7 @@ const MyLearning = () => {
               <ContinueLearning />
               <RecommendedForYou />
               <PopularSkillPaths />
-              <PopularCoursesForYou />
+              <PopularCoursesForYou courses={courses}/>
               <LatestAdditions />
             </div>
           )}

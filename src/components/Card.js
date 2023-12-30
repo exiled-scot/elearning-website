@@ -14,8 +14,6 @@ const Card = ({ courses }) => {
     setHoveredCourseId(null);
   };
 
-  if (!courses) return null;
-
   return (
     <div className="card-container">
       {courses.map((course) => (
