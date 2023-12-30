@@ -17,9 +17,15 @@ const InstructorPage = ({ instructor }) => {
               )}
             </div>
             <div className="social-media-container">
-              <p className="social-media-links">Website</p>
-              <p className="social-media-links">Twitter</p>
-              <p className="social-media-links">LinkedIn</p>
+              <div>
+                <a href="/" className="social-media-links">Website</a>
+              </div>
+              <div>
+                <a href="https://twitter.com" className="social-media-links">Twitter</a>
+              </div>
+              <div>
+                <a href="https://linkedin.com" className="social-media-links">LinkedIn</a>
+              </div>
             </div>
           </div>
           <div className="instructor-profile--content-wrapper">

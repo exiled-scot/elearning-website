@@ -129,7 +129,7 @@ const App = () => {
           {instructors.map((instructor) => (
             <Route
               key={instructor.name}
-              path={`/users/${createSlug(instructor.name)}`}
+              path={`/instructors/${createSlug(instructor.name)}`}
               element={<InstructorPage instructor={instructor} />}
             />
           ))}
