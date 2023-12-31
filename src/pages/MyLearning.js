@@ -65,13 +65,19 @@ const PopularCoursesForYou = ({ courses }) => {
   );
 };
 
+const LatestAdditions = ({ courses }) => {
+  // Sort the courses array by the course.updated timestamp in descending order
+  const sortedCourses = courses.sort(
+    (a, b) => new Date(b.updated) - new Date(a.updated)
+  );
 
-const LatestAdditions = () => {
   return (
     <div>
       <div className="mylearning-carousel">
         <h3>Latest Additions</h3>
       </div>
+      {/* Pass the sortedCourses array as a prop to the Card component */}
+      <Card courses={sortedCourses.slice(0, 4)} />
       <button className="centered-button button-29">Browse all new</button>
     </div>
   );
@@ -183,7 +189,7 @@ const MyLearning = ({ courses }) => {
               <RecommendedForYou />
               <PopularSkillPaths />
               <PopularCoursesForYou courses={courses}/>
-              <LatestAdditions />
+              <LatestAdditions courses={courses}/>
             </div>
           )}
 
