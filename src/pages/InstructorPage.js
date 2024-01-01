@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import slugify from "slugify";
 import "./InstructorPage.css";
+import Instructor from "../api/models/Instructor";
 
 const InstructorPage = ({ instructor }) => {
   return (
@@ -17,15 +18,11 @@ const InstructorPage = ({ instructor }) => {
               )}
             </div>
             <div className="social-media-container">
-              <div>
-                <a href="/" className="social-media-links">Website</a>
-              </div>
-              <div>
-                <a href="https://twitter.com" className="social-media-links">Twitter</a>
-              </div>
-              <div>
-                <a href="https://linkedin.com" className="social-media-links">LinkedIn</a>
-              </div>
+              {instructor.social_media.map((link, index) => (
+                <div key={index}>
+                  <a href={link.url} className="social-media-links">{link.text}</a>
+                </div>
+              ))}
             </div>
           </div>
           <div className="instructor-profile--content-wrapper">
