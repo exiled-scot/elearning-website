@@ -18,11 +18,13 @@ const InstructorPage = ({ instructor }) => {
               )}
             </div>
             <div className="social-media-container">
-              {instructor.social_media.map((link, index) => (
-                <div key={index}>
-                  <a href={link.url} className="social-media-links">{link.text}</a>
-                </div>
-              ))}
+              {instructor.social_media && Array.isArray(instructor.social_media) ? (
+                instructor.social_media.map((link, index) => (
+                  <div key={index}>
+                    <a href={link.url} className="social-media-links">{link.text}</a>
+                  </div>
+                ))
+              ) : null}
             </div>
           </div>
           <div className="instructor-profile--content-wrapper">
