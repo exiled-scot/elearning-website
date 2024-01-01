@@ -19,6 +19,7 @@ import Assessments from "./pages/Assessments";
 import Logout from "./components/Logout";
 import { User } from "./api/models/User";
 import ProfilePage from "./pages//ProfilePage";
+import Instructor from "./api/models/Instructor.js";
 
 const App = () => {
   const [courses, setCourses] = useState([]);
@@ -61,8 +62,20 @@ const App = () => {
           return course;
         });
 
+        const instructors = instructorsData.map((instructorData) => {
+          const instructor = new Instructor(
+            instructorData.id,
+            instructorData.name,
+            instructorData.title,
+            instructorData.about,
+            instructorData.social_media,
+            instructorData.profilePhoto
+          );
+          return instructor;
+        });
+
         setCourses(courses);
-        setInstructors(instructorsData);
+        setInstructors(instructors);
         setUsers(users);
         setLoading(false);
       } catch (error) {
