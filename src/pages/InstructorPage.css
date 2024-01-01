@@ -6,6 +6,15 @@
   background-color: #f0f0f0;
   padding: 20px;
   box-sizing: border-box;
+  min-height: 50vh;
+  display: flex; /* Add this line to enable flex layout */
+  flex-direction: column; /* Add this line to make it a column layout */
+  justify-content: space-between; /* Add this line to distribute items vertically */
+}
+
+.social-media-container {
+  /* Remove margin-top: 200px; */
+  margin-top: auto; /* Add this line to push it to the bottom */
 }
 
 .profile-photo-wrapper {
@@ -18,10 +27,6 @@
   height: 150px;
   object-fit: cover;
   border-radius: 50%;
-}
-
-.social-media-container {
-  margin-top: 200px;
 }
 
 .social-media-links {
