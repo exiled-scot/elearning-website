@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import slugify from "slugify";
 import "./InstructorPage.css";
 import Instructor from "../api/models/Instructor";
+import { RxAvatar } from "react-icons/rx";
 
 const InstructorPage = ({ instructor }) => {
   return (
@@ -14,7 +15,7 @@ const InstructorPage = ({ instructor }) => {
               {instructor.profilePhoto ? (
                 <img className="profile-photo instructor-profile--instructor-image--1wMLG" src={"http://localhost:5002/api/files/wzfknx3j0upbldh/" + instructor.id + "/" + instructor.profilePhoto} alt="Profile Photo" />
               ) : (
-                <div className="profile-photo-circle"></div>
+                <RxAvatar className="profile-photo-circle" />
               )}
             </div>
             <div className="social-media-container">

@@ -18,8 +18,19 @@
 }
 
 .profile-photo-wrapper {
-  text-align: center;
-  margin-bottom: 20px;
+  display: flex; /* or grid */
+  justify-content: center; /* horizontally center the RxAvatar */
+  align-items: center; /* vertically center the RxAvatar */
+  width: 100%; /* ensure the container takes up the full width */
+  height: 100%; /* ensure the container takes up the full height */
+}
+
+.profile-photo-circle {
+  width: 100%; /* ensure the RxAvatar takes up the full width of the container */
+  height: 100%; /* ensure the RxAvatar takes up the full height of the container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile-photo {
