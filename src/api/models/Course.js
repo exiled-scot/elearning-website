@@ -33,6 +33,7 @@ export class Course {
       this.requirements = courseData.requirements;
       this.reviews = courseData.reviews;
       this.title = courseData.title;
+      this.updated = courseData.updated;
     } catch (error) {
       console.log(error);
     }

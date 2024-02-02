@@ -1,3 +1,44 @@
 .red-text-alert {
   color: red;
 }
+
+.center-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1 / span 2;
+  text-align: center;
+}
+
+.icon {
+  height: 35px;
+  width: 35px;
+}
+.line-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.line-container:before,
+.line-container:after {
+  content: "";
+  flex: 1;
+  background: black;
+  height: 1px;
+  margin: 0 0.5em;
+}
+
+.icon-container:hover .icon {
+  transform: scale(2);
+}
+
+.bottom-div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  grid-column: 1 / span 2;
+  text-align: center;
+}

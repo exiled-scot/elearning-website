@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import PocketBase from "pocketbase";
 import "../App.css";
+import SocialSignUpComponent from "./SocialSignUpComponent";
 
 Modal.setAppElement("#root");
 
@@ -59,8 +60,6 @@ const SignUp = ({ closeModal, onSuccess }) => {
     }
   };
 
-  // Rest of the component
-
   return (
     <div>
       <Modal
@@ -73,25 +72,30 @@ const SignUp = ({ closeModal, onSuccess }) => {
             justifyContent: "center",
             alignItems: "center",
             zIndex: 1000,
+            overflowX: "auto",
           },
           content: {
-            width: "40%",
-            height: "40%",
+            maxWidth: "600px",
+            width: "600px", // Set a fixed width
+            height: "600px", // Set a fixed height
             position: "relative",
             zIndex: 1001,
             borderRadius: "20px",
+            // Prevent resizing
+            resize: "none",
+            overflow: "auto", // Add scroll if content overflows
           },
         }}
       >
         <form
           onSubmit={handleSubmit}
           style={{
-            padding: "40px",
-            margin: "40px",
+            padding: "10px",
+            margin: "30px",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
             columnGap: "10px",
-            rowGap: "20px",
+            rowGap: "1.5rem",
           }}
         >
           <label
@@ -102,13 +106,15 @@ const SignUp = ({ closeModal, onSuccess }) => {
           </label>
           <div
             className={`input-container ${isActive ? "is-active" : ""}`}
-            style={{ gridColumn: "2", margin: "5px 0" }}
+            style={{ display: "flex", alignItems: "center" }}
           >
             <input
+              style={{ width: "100%" }}
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+
             {!emailIsValid && (
               <p className="red-text-alert">Invalid email address.</p>
             )}
@@ -124,13 +130,12 @@ const SignUp = ({ closeModal, onSuccess }) => {
             style={{ display: "flex", alignItems: "center" }}
           >
             <input
+              style={{ width: "100%" }}
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            {!NameIsValid && (
-              <p className="red-text-alert">Invalid name.</p>
-            )}
+            {!NameIsValid && <p className="red-text-alert">Invalid name.</p>}
           </div>
           <label
             className="label"
@@ -143,6 +148,7 @@ const SignUp = ({ closeModal, onSuccess }) => {
             style={{ display: "flex", alignItems: "center" }}
           >
             <input
+              style={{ width: "100%" }}
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -163,6 +169,7 @@ const SignUp = ({ closeModal, onSuccess }) => {
             style={{ display: "flex", alignItems: "center" }}
           >
             <input
+              style={{ width: "100%" }}
               type="password"
               value={passwordConfirm}
               onChange={(e) => setPasswordConfirm(e.target.value)}
@@ -171,23 +178,19 @@ const SignUp = ({ closeModal, onSuccess }) => {
               <p className="red-text-alert">Passwords do not match.</p>
             )}
           </div>
-          {error && <p className="red-text-alert">{error}</p>}
-          <button
-            type="submit"
-            className="button-28"
-            style={{
-              justifySelf: "center",
-              marginTop: "20px",
-              width: "150px",
-              height: "50px",
-              position: "absolute",
-              bottom: 20,
-              left: "50%",
-              transform: "translateX(-50%)",
-            }}
-          >
-            Register
-          </button>
+          <div style={{ padding: "10px" }}>
+            {error && <div style={{ color: "red" }}>{error}</div>}
+          </div>
+          <div className="bottom-div">
+            <div style={{ gridColumn: "1 / span 2", textAlign: "center" }}>
+              <div style={{ padding: "20px" }}>
+                <button type="submit" className="button-28">
+                  Register
+                </button>
+              </div>
+            </div>
+            <SocialSignUpComponent />
+          </div>
         </form>
       </Modal>
     </div>

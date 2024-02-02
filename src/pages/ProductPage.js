@@ -55,16 +55,16 @@ const BuyCourse = ({ course }) => {
       <div className="image-overlay">
         <p>Preview this course</p>
       </div>
-      <button className="buy-button">Buy this course</button>
+      <button className="buy-button button-effect">Buy this course</button>
       <div className="sidebar-actions">
         <div className="share-action">
-          <button className="share-button">Share</button>
+          <button className="share-button button-effect">Share</button>
         </div>
         <div className="gift-action">
-          <button className="gift-button">Gift this course</button>
+          <button className="gift-button button-effect">Gift this course</button>
         </div>
         <div className="coupon-action">
-          <button className="coupon-button">Apply Coupon</button>
+          <button className="coupon-button button-effect">Apply Coupon</button>
         </div>
       </div>
     </div>

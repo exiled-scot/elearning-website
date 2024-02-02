@@ -7,11 +7,12 @@
 .card {
   width: 300px;
   margin: 20px;
-  padding: 20px;
+  padding: 20px 20px 0 20px; /* Remove padding bottom to allow button to sit at the bottom */
   border: 1px solid #ddd;
   border-radius: 5px;
   position: relative;
   transition: box-shadow 0.3s, transform 0.3s;
+  box-sizing: border-box; /* Make sure padding does not affect the overall width */
 }
 
 .card.hovered {
@@ -47,6 +48,9 @@
 
 .wrapper {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure the wrapper takes the full height of its parent */
 }
 
 .title {
@@ -64,11 +68,12 @@
 .menu-content {
   list-style: none;
   padding: 0;
-  margin-top: 10px;
+  position: absolute;
+  right: 10%;
 }
 
 .menu-content li {
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .menu-content li a {
@@ -78,4 +83,18 @@
 
 .menu-content li a i {
   margin-right: 5px;
+}
+.description-container {
+  position: relative;
+  max-height: 5.6em; /* Assuming line-height is 1.2em, then this would be for 3 lines */
+  overflow: hidden;
+}
+
+.description-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.2em; /* Height of one line of text */
+  background: linear-gradient(to bottom, transparent, #fff);
 }

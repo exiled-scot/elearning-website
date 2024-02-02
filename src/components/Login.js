@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import PocketBase from "pocketbase";
-import { authenticate, isAuthenticated, getToken, getUserId } from "../utils/auth.js";
+import {
+  authenticate,
+  isAuthenticated,
+  getToken,
+  getUserId,
+} from "../utils/auth.js";
+import SocialSignUpComponent from "./SocialSignUpComponent";
 
 Modal.setAppElement("#root");
 
@@ -36,25 +42,30 @@ const Login = ({ closeModal, onSuccess }) => {
             justifyContent: "center",
             alignItems: "center",
             zIndex: 1000,
+            overflowX: "auto",
           },
           content: {
-            width: "40%", // Modified as per the request
-            height: "40%", // Modified as per the request
+            maxWidth: "600px",
+            width: "600px", // Set a fixed width
+            height: "600px", // Set a fixed height
             position: "relative",
             zIndex: 1001,
-            borderRadius: "20px", // Set the corner radius value here
+            borderRadius: "20px",
+            // Prevent resizing
+            resize: "none",
+            overflow: "auto", // Add scroll if content overflows
           },
         }}
       >
         <form
           onSubmit={handleSubmit}
           style={{
-            padding: "40px",
-            margin: "40px",
+            padding: "10px",
+            margin: "30px",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
             columnGap: "10px",
-            rowGap: "20px",
+            rowGap: "1.5rem",
           }}
         >
           <label
@@ -97,24 +108,18 @@ const Login = ({ closeModal, onSuccess }) => {
               <p className="red-text-alert">Invalid password.</p>
             )}
           </div>
-          <div>
-            <button
-              type="submit"
-              className="button-28"
-              style={{
-                justifySelf: "center",
-                marginTop: "20px",
-                width: "150px",
-                height: "50px",
-                position: "absolute",
-                bottom: 20,
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}
-            >
-              Log in
-            </button>
-            {error && <div style={{ color: "red" }}>{error}</div>}
+          <div className="bottom-div">
+            <div style={{ gridColumn: "1 / span 2", textAlign: "center" }}>
+              <div style={{ padding: "20px" }}>
+                <div style={{ padding: "10px" }}>
+                  {error && <div style={{ color: "red" }}>{error}</div>}
+                </div>
+                <button type="submit" className="button-28">
+                  Log In
+                </button>
+              </div>
+              <SocialSignUpComponent />
+            </div>
           </div>
         </form>
       </Modal>

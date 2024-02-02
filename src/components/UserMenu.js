@@ -36,13 +36,30 @@ const UserMenu = ({ isOpen }) => {
           <li>
             <span>Hello, {name}</span>
           </li>
-
           <li>
-            <a href={`/accounts/${id}`}>Account Settings</a>
+            <a href={`/purchases`}>
+              <span className="icon-purchases"></span>
+              My Purchases
+            </a>
           </li>
-
           <li>
-            <a href="/logout">Sign Out</a>
+            <a href={`/accounts/${id}`}>
+              <span className="icon-settings"></span>
+              Account Settings
+            </a>
+          </li>
+          <li>
+            <a href={`/certificates`}>
+              <span className="icon-certificates"></span>
+              My Certificates
+            </a>
+          </li>
+          <li>
+            {" "}
+            <a href="/logout">
+              <span className="icon-logout"></span>
+              Logout
+            </a>
           </li>
         </ul>
       </div>

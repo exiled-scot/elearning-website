@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import slugify from "slugify";
 import "./InstructorPage.css";
+import Instructor from "../api/models/Instructor";
+import { RxAvatar } from "react-icons/rx";
 
 const InstructorPage = ({ instructor }) => {
   return (
@@ -13,13 +15,17 @@ const InstructorPage = ({ instructor }) => {
               {instructor.profilePhoto ? (
                 <img className="profile-photo instructor-profile--instructor-image--1wMLG" src={"http://localhost:5002/api/files/wzfknx3j0upbldh/" + instructor.id + "/" + instructor.profilePhoto} alt="Profile Photo" />
               ) : (
-                <div className="profile-photo-circle"></div>
+                <RxAvatar className="profile-photo-circle" />
               )}
             </div>
             <div className="social-media-container">
-              <p className="social-media-links">Website</p>
-              <p className="social-media-links">Twitter</p>
-              <p className="social-media-links">LinkedIn</p>
+              {instructor.social_media && Array.isArray(instructor.social_media) ? (
+                instructor.social_media.map((link, index) => (
+                  <div key={index}>
+                    <a href={link.url} className="social-media-links">{link.text}</a>
+                  </div>
+                ))
+              ) : null}
             </div>
           </div>
           <div className="instructor-profile--content-wrapper">

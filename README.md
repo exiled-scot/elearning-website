@@ -2,7 +2,13 @@
 
 This is a eLearning platform, akin to Udemy or Pluralsight.
 
+| Mobile View | Web View |
+|---------|---------|
+| ![Mobile View](./screenshots/screenshot1.png) | ![Web View](./screenshots/screenshot2.png) |
+
 ## Features
+
+**IT IS A WORK IN PROGRESS**
 
 - **TODO** User authentication: Users can create accounts, log in, and access personalized learning materials.
 - **TODO** Course catalog: Users can browse and enroll in various courses offered on the platform.
