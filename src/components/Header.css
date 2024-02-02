@@ -38,6 +38,12 @@
   top: -20%;
 }
 
+@media (max-width: 1400px) {
+  .header-image {
+    display: none;
+  }
+}
+
 .header-title {
   position: absolute;
   left: 50%;
