@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  pocketbase:
+    image: spectado/pocketbase:latest
+    container_name: pocketbase
+    restart: unless-stopped
+    ports:
+      - "5002:80"
+    volumes:
+      - ./src/data:/pb_data
+
+  reactapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: reactapp
+    restart: unless-stopped
+    ports:
+      - "3002:3000"
