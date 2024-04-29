@@ -1,10 +1,9 @@
 import { BASE_URL } from '../api';
 
 export class Course {
-  constructor(categories, collectionName, content, courseContent, created, description, id, image, instructor, requirements, reviews, title) {
+  constructor(categories, collectionName, courseContent, created, description, id, image, instructor, requirements, reviews, title) {
     this.categories = categories;
     this.collectionName = collectionName;
-    this.content = content;
     this.courseContent = courseContent;
     this.created = created;
     this.description = description;
@@ -23,7 +22,6 @@ export class Course {
       const courseData = data.items[0];
       this.categories = courseData.categories;
       this.collectionName = courseData.collectionName;
-      this.content = courseData.content;
       this.courseContent = courseData.courseContent;
       this.created = courseData.created;
       this.description = courseData.description;
