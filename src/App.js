@@ -98,9 +98,9 @@ const App = () => {
     if (typeof text !== "string") {
       return "";
     }
-    return slugify(text);
+    return slugify(text, { lower: true });
   };
-
+  
   return (
     <Router>
       <Layout>
