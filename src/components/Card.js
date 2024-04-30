@@ -14,6 +14,10 @@ const Card = ({ courses }) => {
     setHoveredCourseId(null);
   };
 
+  if (!courses || courses.length === 0) {
+    return null; // Return nothing if courses is empty, null or undefined
+  }
+
   return (
     <div className="card-container">
       {courses.map((course) => (
@@ -21,10 +25,10 @@ const Card = ({ courses }) => {
           to={`/courses/${slugify(course.title)}`}
           className="card-link"
           style={{ textDecoration: "none", color: "inherit" }}
+          key={course.id} // Move the key prop to the Link component
         >
           <div
             className={`card ${hoveredCourseId === course.id ? "hovered" : ""}`}
-            key={course.id}
             onMouseEnter={() => handleMouseEnter(course.id)}
             onMouseLeave={handleMouseLeave}
           >
@@ -46,11 +50,11 @@ const Card = ({ courses }) => {
                 </div>
               </div>
               <button
-                 className="button-28 buy-button"
-                 onClick={(event) => {
-                   event.preventDefault();
-                   event.stopPropagation();
-                   window.location.href = `/courses/${slugify(course.title)}/purchase`;
+                className="button-28 buy-button"
+                onClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  window.location.href = `/courses/${slugify(course.title)}/purchase`;
                 }}
               >
                 Buy this course
