@@ -22,7 +22,7 @@ const Card = ({ courses }) => {
     <div className="card-container">
       {courses.map((course) => (
         <Link
-          to={`/courses/${slugify(course.title)}`}
+          to={`/courses/${slugify(course.id)}`}
           className="card-link"
           style={{ textDecoration: "none", color: "inherit" }}
           key={course.id} // Move the key prop to the Link component
@@ -34,7 +34,7 @@ const Card = ({ courses }) => {
           >
             <div className="image-wrapper">
               <img
-                src={`http://localhost:5002/api/files/zahet9k8sqf34u9/${course.id}/${course.image}?token=`}
+                src={`http://localhost:5002/api/files/h0ynbdfoqmz1vn8/${course.id}/${course.image}?token=`}
                 alt="image"
                 className="card-image"
               />
@@ -54,7 +54,7 @@ const Card = ({ courses }) => {
                 onClick={(event) => {
                   event.preventDefault();
                   event.stopPropagation();
-                  window.location.href = `/courses/${slugify(course.title)}/purchase`;
+                  window.location.href = `/courses/${slugify(course.id)}/purchase`;
                 }}
               >
                 Buy this course

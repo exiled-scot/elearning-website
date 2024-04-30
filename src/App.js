@@ -136,8 +136,8 @@ const App = () => {
   
           {courses.map((course) => (
             <Route
-              key={course.title}
-              path={`/courses/${createSlug(course.title)}`}
+              key={course.id}
+              path={`/courses/${createSlug(course.id)}`}
               element={<ProductPage course={course} />}
             />
           ))}

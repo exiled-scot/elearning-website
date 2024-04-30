@@ -10,44 +10,30 @@ const CourseTitle = ({ title }) => {
 };
 
 const CourseImage = ({ id, image }) => {
-  const imageUrl = `http://localhost:5002/api/files/zahet9k8sqf34u9/${id}/${image}?token=`;
+  const imageUrl = `http://localhost:5002/api/files/h0ynbdfoqmz1vn8/${id}/${image}?token=`;
 
   return <img src={imageUrl} alt="image" className="card-image" />;
 };
 
 const CourseContent = ({ content }) => {
-  if (content === null) {
+  if (!content || content.length === 0) {
     return null;
   }
 
-  let parsedContent;
-
-  try {
-    parsedContent = content;
-  } catch (error) {
-    console.error('Error parsing content:', error);
-    parsedContent = {};
-  }
-  const courseContentList = parsedContent.course_content?.map((item, index) => (
+  const courseContentList = content.map((item, index) => (
     <li key={index}>{item}</li>
   ));
 
-  if (parsedContent?.course_content?.length > 0) {
-    return (
-      parsedContent.course_content && (
-        <div className="two-column-list">
-          <h2>What You'll Learn:</h2>
-          <ul>{courseContentList}</ul>
-        </div>
-      )
-    );
-  }
-
-  return null;
+  return (
+    <div className="two-column-list">
+      <h2>What You'll Learn:</h2>
+      <ul>{courseContentList}</ul>
+    </div>
+  );
 };
 
 const BuyCourse = ({ course }) => {
-  const { title, id, instructor, image, content, description, requirements, reviews } = course;
+  const { id, image } = course;
 
   return (
     <div className="buy-course--sidebar">
@@ -79,11 +65,16 @@ const ProductPage = ({ course }) => {
       <CourseImage id={id} image={image} />
       <CourseTitle title={title} />
       <div>
-        <h2>{description.match(/^.+?[.!?](\s|$)/)[0]}</h2>
+        <h2>{description}</h2>
       </div>
+      {/* {description && (
+        <div>
+          <h2>{description.match(/^.+?[.!?](\s|$)/)[0]}</h2>
+        </div>
+      )}
       <div>
         Created by <a href={`/instructors/${slugify(instructor)}`} style={{ textDecoration: 'underline', color: 'blue' }}>{instructor}</a>
-      </div>
+      </div> */}
       <CourseContent content={content} className="course-requirements" />
       <ReadMore>{description}</ReadMore>
       <Requirements requirements={requirements} />
