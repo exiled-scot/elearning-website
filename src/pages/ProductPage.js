@@ -15,21 +15,36 @@ const CourseImage = ({ id, image }) => {
   return <img src={imageUrl} alt="image" className="card-image" />;
 };
 
-const CourseContent = ({ content, className }) => {
-  if (!content || content.length === 0) {
+const CourseContent = ({ content }) => {
+  if (content === null) {
     return null;
   }
 
-  const courseContentList = content.map((item, index) => (
+  let parsedContent;
+
+  try {
+    parsedContent = content;
+  } catch (error) {
+    console.error('Error parsing content:', error);
+    parsedContent = {};
+  }
+
+  const courseContentList = parsedContent.content?.map((item, index) => (
     <li key={index}>{item}</li>
   ));
 
-  return (
-    <div className={className}>
-      <h2>What You'll Learn:</h2>
-      <ul>{courseContentList}</ul>
-    </div>
-  );
+  if (parsedContent?.content?.length > 0) {
+    return (
+      parsedContent.content && (
+        <div>
+          <h2>What You'll Learn</h2>
+          <ul>{courseContentList}</ul>
+        </div>
+      )
+    );
+  }
+
+  return null;
 };
 
 const BuyCourse = ({ course }) => {
@@ -67,9 +82,6 @@ const ProductPage = ({ course }) => {
     <div>
       <CourseImage id={id} image={image} />
       <CourseTitle title={title} />
-      <div>
-        <h2>{description}</h2>
-      </div>
       {/* {description && (
         <div>
           <h2>{description.match(/^.+?[.!?](\s|$)/)[0]}</h2>
@@ -78,14 +90,7 @@ const ProductPage = ({ course }) => {
       <div>
         Created by <a href={`/instructors/${slugify(instructor)}`} style={{ textDecoration: 'underline', color: 'blue' }}>{instructor}</a>
       </div> */}
-            <div className="course-content">
-        <h2>Course Content:</h2>
-        <ul>
-          {courseContent.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </div>
+      <CourseContent content={content} />
       <ReadMore>{description}</ReadMore>
       <Requirements requirements={requirements} />
       <Reviews reviews={reviews} />
