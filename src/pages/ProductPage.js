@@ -15,7 +15,7 @@ const CourseImage = ({ id, image }) => {
   return <img src={imageUrl} alt="image" className="card-image" />;
 };
 
-const CourseContent = ({ content }) => {
+const CourseContent = ({ content, className }) => {
   if (!content || content.length === 0) {
     return null;
   }
@@ -25,7 +25,7 @@ const CourseContent = ({ content }) => {
   ));
 
   return (
-    <div className="two-column-list">
+    <div className={className}>
       <h2>What You'll Learn:</h2>
       <ul>{courseContentList}</ul>
     </div>
@@ -60,6 +60,9 @@ const BuyCourse = ({ course }) => {
 const ProductPage = ({ course }) => {
   const { title, id, instructor, image, content, description, requirements, reviews } = course;
 
+  // Check if content is an array, otherwise set it to an empty array
+  const courseContent = Array.isArray(content) ? content : [];
+
   return (
     <div>
       <CourseImage id={id} image={image} />
@@ -75,7 +78,14 @@ const ProductPage = ({ course }) => {
       <div>
         Created by <a href={`/instructors/${slugify(instructor)}`} style={{ textDecoration: 'underline', color: 'blue' }}>{instructor}</a>
       </div> */}
-      <CourseContent content={content} className="course-requirements" />
+            <div className="course-content">
+        <h2>Course Content:</h2>
+        <ul>
+          {courseContent.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </div>
       <ReadMore>{description}</ReadMore>
       <Requirements requirements={requirements} />
       <Reviews reviews={reviews} />
