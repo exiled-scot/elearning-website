@@ -13,7 +13,7 @@ const InstructorPage = ({ instructor }) => {
           <div className="instructor-profile--sidebar--1hqU2">
             <div className="profile-photo-wrapper">
               {instructor.profilePhoto ? (
-                <img className="profile-photo instructor-profile--instructor-image--1wMLG" src={"http://localhost:5002/api/files/wzfknx3j0upbldh/" + instructor.id + "/" + instructor.profilePhoto} alt="Profile Photo" />
+                <img className="profile-photo instructor-profile--instructor-image--1wMLG" src={"http://localhost:5002/api/files/gga5f43orac99gs/" + instructor.id + "/" + instructor.profilePhoto} alt="Profile Photo" />
               ) : (
                 <RxAvatar className="profile-photo-circle" />
               )}
@@ -33,7 +33,6 @@ const InstructorPage = ({ instructor }) => {
               <div className="instructor-profile--instructor-info--1-iYp">
                 <h3 className="instructor-profile--instructor-heading--3Lp_v">INSTRUCTOR</h3>
                 <h1 className="instructor-profile--instructor-title--1L6bi">{instructor.name}</h1>
-                <h3>{instructor.title}</h3>
               </div>
               <div className="instructor-profile--about-me--3D60O">
                 <h2>About Me</h2>

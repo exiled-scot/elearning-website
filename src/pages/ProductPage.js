@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Reviews from "../components/Reviews";
 import "./ProductPage.css";
 import ReadMore from "../components/ReadMore";
@@ -47,6 +47,23 @@ const CourseContent = ({ content }) => {
   return null;
 };
 
+async function fetchInstructorData(instructor_id) {
+  const url = `http://localhost:5002/api/collections/instructors/records/${instructor_id}`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
+}
+
 const BuyCourse = ({ course }) => {
   const { id, image } = course;
 
@@ -74,16 +91,40 @@ const BuyCourse = ({ course }) => {
 
 const ProductPage = ({ course }) => {
   const { title, id, instructors, image, content, description, requirements, reviews } = course;
+  const [instructorData, setInstructorData] = useState([]);
 
-  // Check if content is an array, otherwise set it to an empty array
-  const courseContent = Array.isArray(content) ? content : [];
+  useEffect(() => {
+    const fetchInstructorsData = async () => {
+      const data = await Promise.all(instructors.map(instructor_id => fetchInstructorData(instructor_id)));
+      setInstructorData(data);
+    };
+
+    fetchInstructorsData();
+  }, [instructors]);
+
+  const displayInstructors = () => {
+    if (instructorData.length === 0) {
+      return null;
+    }
+
+    const instructorLinks = instructorData.map((instructor, index) => (
+      <React.Fragment key={index}>
+        <a href={`/instructors/${slugify(instructor.name)}`} style={{ textDecoration: 'underline', color: 'blue' }}>
+          {instructor.name}
+        </a>
+        {index !== instructorData.length - 1 ? (index !== instructorData.length - 2 ? ", " : " and ") : ""}
+      </React.Fragment>
+    ));
+
+    return instructorLinks;
+  };
 
   return (
     <div>
       <CourseImage id={id} image={image} />
       <CourseTitle title={title} />
       <div>
-        Created by <a href={`/instructors/${slugify(String(instructors))}`} style={{ textDecoration: 'underline', color: 'blue' }}>{String(instructors)}</a>
+        Created by: {displayInstructors()}
       </div>
       <CourseContent content={content} />
       <ReadMore>{description}</ReadMore>
