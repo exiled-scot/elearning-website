@@ -54,7 +54,7 @@ const App = () => {
             courseData.description,
             courseData.id,
             courseData.image,
-            courseData.instructor,
+            courseData.instructors,
             courseData.requirements,
             courseData.reviews,
             courseData.title

@@ -73,7 +73,7 @@ const BuyCourse = ({ course }) => {
 };
 
 const ProductPage = ({ course }) => {
-  const { title, id, instructor, image, content, description, requirements, reviews } = course;
+  const { title, id, instructors, image, content, description, requirements, reviews } = course;
 
   // Check if content is an array, otherwise set it to an empty array
   const courseContent = Array.isArray(content) ? content : [];
@@ -82,14 +82,9 @@ const ProductPage = ({ course }) => {
     <div>
       <CourseImage id={id} image={image} />
       <CourseTitle title={title} />
-      {/* {description && (
-        <div>
-          <h2>{description.match(/^.+?[.!?](\s|$)/)[0]}</h2>
-        </div>
-      )}
       <div>
-        Created by <a href={`/instructors/${slugify(instructor)}`} style={{ textDecoration: 'underline', color: 'blue' }}>{instructor}</a>
-      </div> */}
+        Created by <a href={`/instructors/${slugify(String(instructors))}`} style={{ textDecoration: 'underline', color: 'blue' }}>{String(instructors)}</a>
+      </div>
       <CourseContent content={content} />
       <ReadMore>{description}</ReadMore>
       <Requirements requirements={requirements} />

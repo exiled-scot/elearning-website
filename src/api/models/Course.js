@@ -1,7 +1,7 @@
 import { BASE_URL } from '../api';
 
 export class Course {
-  constructor(categories, collectionName, content, courseContent, created, description, id, image, instructor, requirements, reviews, title) {
+  constructor(categories, collectionName, content, courseContent, created, description, id, image, instructors, requirements, reviews, title) {
     this.categories = categories;
     this.collectionName = collectionName;
     this.content = content;
@@ -10,7 +10,7 @@ export class Course {
     this.description = description;
     this.id = id;
     this.image = image;
-    this.instructor = instructor;
+    this.instructors = instructors;
     this.requirements = requirements;
     this.reviews = reviews;
     this.title = title;
@@ -29,7 +29,7 @@ export class Course {
       this.description = courseData.description;
       this.id = courseData.id;
       this.image = courseData.image;
-      this.instructor = courseData.instructor;
+      this.instructors = courseData.instructors;
       this.requirements = courseData.requirements;
       this.reviews = courseData.reviews;
       this.title = courseData.title;
