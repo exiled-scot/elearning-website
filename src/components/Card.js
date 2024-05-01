@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Card.css";
 import slugify from "slugify";
 
-const Card = ({ courses }) => {
+const Card = ({ courses, className = "" }) => {
   const [hoveredCourseId, setHoveredCourseId] = useState(null);
 
   const handleMouseEnter = (courseId) => {
@@ -19,7 +19,7 @@ const Card = ({ courses }) => {
   }
 
   return (
-    <div className="card-container">
+    <div className={`card-container ${className}`}>
       {courses.map((course) => (
         <Link
           to={`/courses/${slugify(course.id)}`}

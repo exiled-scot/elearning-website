@@ -49,7 +49,7 @@ const InstructorPage = ({ instructor, courses }) => {
               </div>
               <div className="courses">
                 <h3>Courses ({filteredCourses.length}):</h3>
-                <Card courses={filteredCourses}/>
+                <Card courses={filteredCourses} className="card-container--left"/>
               </div>
             </div>
           </div>
