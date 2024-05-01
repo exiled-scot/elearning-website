@@ -4,8 +4,15 @@ import slugify from "slugify";
 import "./InstructorPage.css";
 import Instructor from "../api/models/Instructor";
 import { RxAvatar } from "react-icons/rx";
+import Card from "../components/Card";
 
-const InstructorPage = ({ instructor }) => {
+const filterCoursesByInstructor = (courses, instructor) => {
+  return courses.filter(course => course.instructors.includes(instructor.id));
+};
+
+const InstructorPage = ({ instructor, courses }) => {
+  const filteredCourses = filterCoursesByInstructor(courses, instructor);
+
   return (
     <>
       <div className="instructor-profile--page-container--1oU4J">
@@ -41,7 +48,8 @@ const InstructorPage = ({ instructor }) => {
                 ))}
               </div>
               <div className="courses">
-                <h3>Courses (#):</h3>
+                <h3>Courses ({filteredCourses.length}):</h3>
+                <Card courses={filteredCourses}/>
               </div>
             </div>
           </div>

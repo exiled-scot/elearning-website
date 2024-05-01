@@ -154,7 +154,7 @@ const App = () => {
             <Route
               key={instructor.name}
               path={`/instructors/${createSlug(instructor.name)}`}
-              element={<InstructorPage instructor={instructor} />}
+              element={<InstructorPage instructor={instructor} courses={courses}/>}
             />
           ))}
         </Routes>
