@@ -4,13 +4,14 @@ import "./ProductPage.css";
 import ReadMore from "../components/ReadMore";
 import Requirements from "../components/Requirements";
 import slugify from "slugify";
+import { BASE_URL } from "../api/api";
 
 const CourseTitle = ({ title }) => {
   return <h1>{title}</h1>;
 };
 
 const CourseImage = ({ id, image }) => {
-  const imageUrl = `http://localhost:5002/api/files/zahet9k8sqf34u9/${id}/${image}?token=`;
+  const imageUrl = `${BASE_URL}/api/files/zahet9k8sqf34u9/${id}/${image}?token=`;
 
   return <img src={imageUrl} alt="image" className="card-image" />;
 };

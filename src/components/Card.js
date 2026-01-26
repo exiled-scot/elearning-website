@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Card.css";
 import slugify from "slugify";
+import { BASE_URL } from "../api/api";
 
 const Card = ({ courses }) => {
   const [hoveredCourseId, setHoveredCourseId] = useState(null);
@@ -30,7 +31,7 @@ const Card = ({ courses }) => {
           >
             <div className="image-wrapper">
               <img
-                src={`http://localhost:5002/api/files/zahet9k8sqf34u9/${course.id}/${course.image}?token=`}
+                src={`${BASE_URL}/api/files/zahet9k8sqf34u9/${course.id}/${course.image}?token=`}
                 alt="image"
                 className="card-image"
               />

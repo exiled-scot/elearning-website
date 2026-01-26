@@ -1,6 +1,6 @@
 import { Course } from './models/Course';
 
-export const BASE_URL = "http://127.0.0.1:5002";
+export const BASE_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5002";
 
 export const getRecords = async (endpoint) => {
   try {

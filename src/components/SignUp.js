@@ -6,7 +6,8 @@ import SocialSignUpComponent from "./SocialSignUpComponent";
 
 Modal.setAppElement("#root");
 
-const pb = new PocketBase("http://127.0.0.1:5002");
+const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5002";
+const pb = new PocketBase(API_URL);
 
 const SignUp = ({ closeModal, onSuccess }) => {
   const [passwordMismatch, setPasswordMismatch] = useState(false);

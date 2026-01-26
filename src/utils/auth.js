@@ -1,6 +1,7 @@
 import PocketBase from "pocketbase";
 
-const pb = new PocketBase("http://127.0.0.1:5002");
+const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5002";
+const pb = new PocketBase(API_URL);
 
 // Save token key
 const TOKEN_KEY = 'elearn_token';

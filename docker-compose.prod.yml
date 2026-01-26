@@ -8,12 +8,36 @@ networks:
   traefik:
     external: true
 
+volumes:
+  pocketbase_data:
+    name: elearning_pocketbase_data
+
 services:
+  pocketbase:
+    image: spectado/pocketbase:latest
+    container_name: elearning-pocketbase
+    restart: unless-stopped
+    networks:
+      - traefik
+    volumes:
+      - pocketbase_data:/pb_data
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.elearning-api.rule=Host(`elearning-api.nihilanth.co.uk`)
+      - traefik.http.routers.elearning-api.entrypoints=websecure
+      - traefik.http.routers.elearning-api.tls.certresolver=letsencrypt
+      - traefik.http.services.elearning-api.loadbalancer.server.port=80
+
   elearning:
-    build: .
+    build:
+      context: .
+      args:
+        - REACT_APP_API_URL=https://elearning-api.nihilanth.co.uk
     image: elearning:latest
     container_name: elearning
     restart: unless-stopped
+    depends_on:
+      - pocketbase
     networks:
       - traefik
     labels:

@@ -4,6 +4,7 @@ import slugify from "slugify";
 import "./InstructorPage.css";
 import Instructor from "../api/models/Instructor";
 import { RxAvatar } from "react-icons/rx";
+import { BASE_URL } from "../api/api";
 
 const InstructorPage = ({ instructor }) => {
   return (
@@ -13,7 +14,7 @@ const InstructorPage = ({ instructor }) => {
           <div className="instructor-profile--sidebar--1hqU2">
             <div className="profile-photo-wrapper">
               {instructor.profilePhoto ? (
-                <img className="profile-photo instructor-profile--instructor-image--1wMLG" src={"http://localhost:5002/api/files/wzfknx3j0upbldh/" + instructor.id + "/" + instructor.profilePhoto} alt="Profile Photo" />
+                <img className="profile-photo instructor-profile--instructor-image--1wMLG" src={`${BASE_URL}/api/files/wzfknx3j0upbldh/${instructor.id}/${instructor.profilePhoto}`} alt="Profile Photo" />
               ) : (
                 <RxAvatar className="profile-photo-circle" />
               )}
