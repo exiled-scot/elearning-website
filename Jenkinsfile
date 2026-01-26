@@ -37,17 +37,16 @@ pipeline {
                     sh "docker rm ${PROJECT_NAME} || true"
 
                     // Deploy new container with Traefik labels
-                    // Using escaped backticks for Traefik Host rule
                     sh """
                         docker run -d \
                             --name ${PROJECT_NAME} \
                             --restart unless-stopped \
                             --network traefik \
-                            --label "traefik.enable=true" \
-                            --label "traefik.http.routers.${PROJECT_NAME}.rule=Host(\\\`${fullHost}\\\`)" \
-                            --label "traefik.http.routers.${PROJECT_NAME}.entrypoints=websecure" \
-                            --label "traefik.http.routers.${PROJECT_NAME}.tls.certresolver=letsencrypt" \
-                            --label "traefik.http.services.${PROJECT_NAME}.loadbalancer.server.port=${CONTAINER_PORT}" \
+                            --label 'traefik.enable=true' \
+                            --label 'traefik.http.routers.${PROJECT_NAME}.rule=Host(`${fullHost}`)' \
+                            --label 'traefik.http.routers.${PROJECT_NAME}.entrypoints=websecure' \
+                            --label 'traefik.http.routers.${PROJECT_NAME}.tls.certresolver=letsencrypt' \
+                            --label 'traefik.http.services.${PROJECT_NAME}.loadbalancer.server.port=${CONTAINER_PORT}' \
                             ${PROJECT_NAME}:latest
                     """
                 }
