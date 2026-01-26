@@ -1,11 +1,5 @@
 pipeline {
-    agent {
-        dockerContainer {
-            image 'docker:cli'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-            label 'docker-agent'
-        }
-    }
+    agent { label 'docker-agent' }
 
     environment {
         PROJECT_NAME = 'elearning'
