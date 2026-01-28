@@ -1,9 +1,13 @@
 import React from 'react';
+import Card from '../components/Card';
+import './Explore.css';
 
-const Explore = () => {
+const Explore = ({ courses }) => {
   return (
-    <div>
-      <h2>Explore</h2>
+    <div className="explore-container">
+      <h2>Explore Courses</h2>
+      <p className="explore-subtitle">Browse our catalog of {courses.length} courses</p>
+      <Card courses={courses} />
     </div>
   );
 };
