@@ -32,8 +32,7 @@ pipeline {
 
     post {
         success {
-            echo "Deployed to https://elearning-demo.nihilanth.co.uk"
-            echo "API available at https://elearning-api.nihilanth.co.uk"
+            echo "Deployment successful for ${PROJECT_NAME}"
         }
         failure {
             echo "Deployment failed for ${PROJECT_NAME}"

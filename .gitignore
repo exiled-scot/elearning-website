@@ -21,3 +21,6 @@ logs.db-shm
 
 # PocketBase data (development)
 src/data/
+
+# Claude
+CLAUDE.md
