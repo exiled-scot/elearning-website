@@ -14,13 +14,28 @@ yarn-error.log*
 
 notes.org*
 
-data.db-shm
-data.db-wal
-logs.db
-logs.db-shm
-
-# PocketBase data (development)
+# Databases
+*.db
+*.db-shm
+*.db-wal
 src/data/
+src/api/data/
+
+# Backups
+backups/
+
+# Environment
+.env
+.env.local
+.env.development
+.env.production
+
+# Test coverage
+coverage/
+
+# Playwright
+playwright-report/
+test-results/
 
 # Claude
 CLAUDE.md
