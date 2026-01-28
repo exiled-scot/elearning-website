@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Card.css";
-import slugify from "slugify";
 import { BASE_URL } from "../api/api";
 
 const Card = ({ courses }) => {
@@ -19,7 +18,7 @@ const Card = ({ courses }) => {
     <div className="card-container">
       {courses.map((course) => (
         <Link
-          to={`/courses/${slugify(course.title)}`}
+          to={`/courses/${course.id}`}
           className="card-link"
           style={{ textDecoration: "none", color: "inherit" }}
         >
@@ -51,7 +50,7 @@ const Card = ({ courses }) => {
                  onClick={(event) => {
                    event.preventDefault();
                    event.stopPropagation();
-                   window.location.href = `/courses/${slugify(course.title)}/purchase`;
+                   window.location.href = `/courses/${course.id}/purchase`;
                 }}
               >
                 Buy this course

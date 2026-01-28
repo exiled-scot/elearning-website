@@ -118,7 +118,7 @@ const App = () => {
               )
             }
           />
-          <Route path="/explore" element={<Explore />} />
+          <Route path="/explore" element={loading ? <p>Loading...</p> : <Explore courses={courses} />} />
           <Route path="/cloudlabs" element={<CloudLabs />} />
           <Route path="/personalisedpaths" element={<PersonalisedPaths />} />
           <Route path="/projects" element={<Projects />} />
@@ -137,7 +137,7 @@ const App = () => {
           {courses.map((course) => (
             <Route
               key={course.title}
-              path={`/courses/${createSlug(course.title)}`}
+              path={`/courses/${course.id}`}
               element={<ProductPage course={course} />}
             />
           ))}
